@@ -129,12 +129,59 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
 apt-get $APT_PROXY_OPTION -y install ffmpeg
+apt-get $APT_PROXY_OPTION -y install nginx libnginx-mod-rtmp
+apt-get $APT_PROXY_OPTION -y install xz-utils
 apt-get $APT_PROXY_OPTION -y install libxml-xpath-perl
 EOS
 
 # ------------------------------------------------------------------------------
 # STREAM
 # ------------------------------------------------------------------------------
+# livestream folder
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+mkdir -p /usr/local/eb/livestream/frames
+mkdir -p /usr/local/eb/livestream/stat
+touch /usr/local/eb/livestream/index.html
+chown www-data: /usr/local/eb/livestream -R
+EOS
+
+# rmpt_stat
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+mkdir /tmp/source
+cd /tmp/source
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get $APT_PROXY_OPTION -dy source nginx
+tar xf nginx_*.debian.tar.xz
+
+cp /tmp/source/debian/modules/rtmp/stat.xsl \
+    /usr/local/eb/livestream/stat/rtmp_stat.xsl
+chown www-data: /usr/local/eb/livestream/stat/rtmp_stat.xsl
+EOS
+
+# frame tools
+cp usr/local/bin/create-frames $ROOTFS/usr/local/bin/
+cp usr/local/bin/mark-frames $ROOTFS/usr/local/bin/
+chmod 755 $ROOTFS/usr/local/bin/create-frames
+chmod 755 $ROOTFS/usr/local/bin/mark-frames
+
+# nginx
+cp etc/nginx/access_list_http.conf $ROOTFS/etc/nginx/
+cp etc/nginx/access_list_rtmp_play.conf $ROOTFS/etc/nginx/
+cp etc/nginx/access_list_rtmp_publish.conf $ROOTFS/etc/nginx/
+cp etc/nginx/modules-available/90-rtmp.conf \
+    $ROOTFS/etc/nginx/modules-available/
+ln -s ../modules-available/90-rtmp.conf $ROOTFS/etc/nginx/modules-enabled/
+cp etc/nginx/sites-available/livestream.conf \
+    $ROOTFS/etc/nginx/sites-available/
+ln -s ../sites-available/livestream.conf $ROOTFS/etc/nginx/sites-enabled/
+rm $ROOTFS/etc/nginx/sites-enabled/default
+sed -i 's/^worker_processes .*$/worker_processes 1;/' \
+    $ROOTFS/etc/nginx/nginx.conf
+lxc-attach -n $MACH -- systemctl stop nginx.service
+lxc-attach -n $MACH -- systemctl start nginx.service
 
 # ------------------------------------------------------------------------------
 # CONTAINER SERVICES
