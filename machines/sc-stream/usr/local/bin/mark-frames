@@ -1,0 +1,69 @@
+#!/bin/bash
+set -e
+
+BASE=/usr/local/eb/livestream/frames
+STREAM=$1
+
+[[ -z "$STREAM" ]] && exit 1
+
+
+# -----------------------------------------------------------------------------
+function on_exit {
+    :
+}
+trap on_exit EXIT
+
+
+# -----------------------------------------------------------------------------
+function current-frame() {
+    png=$1
+
+    frame_id=$(echo $png | cut -d '-' -f2 | cut -d '.' -f1)
+    echo $png > $BASE/$STREAM/current-frame
+    echo $frame_id > $BASE/$STREAM/current-frame-id
+}
+
+
+# -----------------------------------------------------------------------------
+function current-clients() {
+    stream=$(curl -s http://127.0.0.1/livestream/status | tr -d '\n\r' | \
+             xpath -q -e "//stream[name='$STREAM']" 2>/dev/null)
+    [[ -z "$stream" ]] && return
+
+    echo $stream | xpath -q -e "//client[publishing]/address" 2>/dev/null | \
+        sed -E 's/<[^>]+>//g' > $BASE/$STREAM/current-publisher.tmp
+    mv $BASE/$STREAM/current-publisher.tmp $BASE/$STREAM/current-publisher
+
+    echo $stream | xpath -q -e "//client/address" 2>/dev/null | \
+        sed -E 's/<[^>]+>//g' | grep -v "127.0.0.1" \
+        > $BASE/$STREAM/current-clients.tmp
+    mv $BASE/$STREAM/current-clients.tmp $BASE/$STREAM/current-clients
+}
+
+
+# -----------------------------------------------------------------------------
+mkdir -p $BASE/$STREAM
+echo ok > $BASE/$STREAM/status
+touch $BASE/$STREAM/current-frame
+touch $BASE/$STREAM/current-frame-id
+touch $BASE/$STREAM/current-publisher
+touch $BASE/$STREAM/current-clients
+
+while true; do
+    i=0
+    for p in $(ls -1r $BASE/$STREAM/frame-*.png); do
+        f=$(basename $p)
+        l=$(printf "$BASE/$STREAM/latest-%06d.png" "$i")
+        ln -sf $f $l
+
+        if [[ $i -eq 0 ]]; then
+            current-frame $f || true
+            current-clients || true
+        fi
+
+        (( i += 1 ))
+    done
+
+    find $BASE/$STREAM -name "*.png" -cmin +1 -delete
+    sleep 1;
+done

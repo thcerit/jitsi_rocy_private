@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+BASE=/usr/local/eb/livestream/frames
+STREAM=$1
+
+[[ -z "$STREAM" ]] && exit 1
+
+
+# -----------------------------------------------------------------------------
+function on_exit {
+    for p in $(pgrep -f "ffmpeg .*/livestream/$STREAM "); do
+        kill -9 $p || true
+    done
+
+    rm -rf $BASE/$STREAM
+}
+trap on_exit EXIT
+
+
+# -----------------------------------------------------------------------------
+mkdir -p $BASE/$STREAM
+
+ffmpeg -v quiet -i rtmp://127.0.0.1/livestream/$STREAM \
+    -nostdin -nostats -vf fps=5 -y $BASE/$STREAM/frame-%06d.png

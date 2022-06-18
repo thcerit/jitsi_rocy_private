@@ -129,6 +129,7 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
 apt-get $APT_PROXY_OPTION -y install ffmpeg
+apt-get $APT_PROXY_OPTION -y install libxml-xpath-perl
 EOS
 
 # ------------------------------------------------------------------------------
