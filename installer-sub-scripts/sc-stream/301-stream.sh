@@ -33,7 +33,7 @@ nft add element eb-nat tcp2port { 1935 : 1935 }
 nft delete element eb-nat tcp2ip { 8000 } 2>/dev/null || true
 nft add element eb-nat tcp2ip { 8000 : $IP }
 nft delete element eb-nat tcp2port { 8000 } 2>/dev/null || true
-nft add element eb-nat tcp2port { 8000 : 8000 }
+nft add element eb-nat tcp2port { 8000 : 80 }
 
 # ------------------------------------------------------------------------------
 # INIT
