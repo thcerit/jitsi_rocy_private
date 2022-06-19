@@ -70,8 +70,12 @@ mkdir -p $SHARED/cache
 # the container config
 rm -rf $ROOTFS/var/cache/apt/archives
 mkdir -p $ROOTFS/var/cache/apt/archives
+rm -rf $ROOTFS/media/frames
+mkdir -p $ROOTFS/media/frames
 
 cat >> /var/lib/lxc/$MACH/config <<EOF
+lxc.mount.entry = tmpfs media/frames tmpfs\
+  defaults,noatime,mode=1777,size=1G 0 0
 
 # Start options
 lxc.start.auto = 1
@@ -140,9 +144,9 @@ EOS
 # livestream folder
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
-mkdir -p /usr/local/eb/livestream/frames
 mkdir -p /usr/local/eb/livestream/stat
 touch /usr/local/eb/livestream/index.html
+ln -s /media/frames /usr/local/eb/livestream/frames
 chown www-data: /usr/local/eb/livestream -R
 EOS
 
