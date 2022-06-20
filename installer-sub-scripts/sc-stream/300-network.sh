@@ -7,7 +7,7 @@ source $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
 # ------------------------------------------------------------------------------
-MACH="sc-stream-host"
+MACH="eb-stream-host"
 cd $MACHINES/$MACH
 
 # ------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ cd $MACHINES/$MACH
 # NETWORK CONFIG
 # ------------------------------------------------------------------------------
 # changed/added system files
-cp etc/dnsmasq.d/sc-stream /etc/dnsmasq.d/
+cp etc/dnsmasq.d/eb-stream /etc/dnsmasq.d/
 
 # ------------------------------------------------------------------------------
 # NETWORK RELATED SERVICES

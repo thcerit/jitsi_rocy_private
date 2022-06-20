@@ -7,11 +7,11 @@ source $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
 # ------------------------------------------------------------------------------
-MACH="sc-jitsi"
+MACH="eb-jitsi"
 cd $MACHINES/$MACH
 
 ROOTFS="/var/lib/lxc/$MACH/rootfs"
-DNS_RECORD=$(grep "address=/$MACH/" /etc/dnsmasq.d/sc-jitsi | head -n1)
+DNS_RECORD=$(grep "address=/$MACH/" /etc/dnsmasq.d/eb-jitsi | head -n1)
 IP=${DNS_RECORD##*/}
 SSH_PORT="30$(printf %03d ${IP##*.})"
 echo JITSI="$IP" >> $INSTALLER/000-source
@@ -217,7 +217,7 @@ echo EXTERNAL_IP="$EXTERNAL_IP" >> $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 mkdir -p /root/.ssh
 chmod 700 /root/.ssh
-cp $MACHINES/sc-jitsi-host/root/.ssh/jms-config /root/.ssh/
+cp $MACHINES/eb-jitsi-host/root/.ssh/jms-config /root/.ssh/
 
 # create ssh key if not exists
 if [[ ! -f /root/.ssh/jms ]] || [[ ! -f /root/.ssh/jms.pub ]]; then
@@ -413,7 +413,7 @@ done
 # HOST CUSTOMIZATION FOR JITSI
 # ------------------------------------------------------------------------------
 # jitsi tools
-cp $MACHINES/sc-jitsi-host/usr/local/sbin/add-jvb-node /usr/local/sbin/
-cp $MACHINES/sc-jitsi-host/usr/local/sbin/set-letsencrypt-cert /usr/local/sbin/
+cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jvb-node /usr/local/sbin/
+cp $MACHINES/eb-jitsi-host/usr/local/sbin/set-letsencrypt-cert /usr/local/sbin/
 chmod 744 /usr/local/sbin/add-jvb-node
 chmod 744 /usr/local/sbin/set-letsencrypt-cert

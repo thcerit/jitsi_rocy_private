@@ -8,9 +8,9 @@ set -e
 #     bash customize.sh
 # ------------------------------------------------------------------------------
 BASEDIR=$(dirname $0)
-JITSI_VERSION=$(lxc-attach -n sc-jitsi -- apt-cache policy jitsi-meet | \
+JITSI_VERSION=$(lxc-attach -n eb-jitsi -- apt-cache policy jitsi-meet | \
                      grep Installed | cut -d: -f2 | xargs)
-JITSI_ROOTFS="/var/lib/lxc/sc-jitsi/rootfs"
+JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
 JITSI_MEET="$JITSI_ROOTFS/usr/share/jitsi-meet"
 JITSI_CONFIG="$JITSI_ROOTFS/etc/jitsi/meet/___JITSI_FQDN___-config.js"
 JITSI_INTERFACE="$JITSI_ROOTFS/usr/share/jitsi-meet/interface_config.js"

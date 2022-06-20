@@ -7,9 +7,9 @@ source $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
 # ------------------------------------------------------------------------------
-MACH="sc-jibri-template"
+MACH="eb-jibri-template"
 
-JITSI_ROOTFS="/var/lib/lxc/sc-jitsi/rootfs"
+JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
 
 # ------------------------------------------------------------------------------
 # INIT
@@ -23,14 +23,14 @@ echo "-------------------------- $MACH --------------------------"
 # JITSI CUSTOMIZATION FOR JIBRI
 # ------------------------------------------------------------------------------
 # prosody config
-cp $MACHINES/sc-jitsi/etc/prosody/conf.avail/recorder.cfg.lua \
+cp $MACHINES/eb-jitsi/etc/prosody/conf.avail/recorder.cfg.lua \
    $JITSI_ROOTFS/etc/prosody/conf.avail/recorder.$JITSI_FQDN.cfg.lua
 sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/" \
     $JITSI_ROOTFS/etc/prosody/conf.avail/recorder.$JITSI_FQDN.cfg.lua
 ln -s ../conf.avail/recorder.$JITSI_FQDN.cfg.lua \
     $JITSI_ROOTFS/etc/prosody/conf.d/
 
-lxc-attach -n sc-jitsi -- zsh <<EOS
+lxc-attach -n eb-jitsi -- zsh <<EOS
 set -e
 systemctl restart prosody.service
 EOS
@@ -39,7 +39,7 @@ EOS
 PASSWD1=$(openssl rand -hex 20)
 PASSWD2=$(openssl rand -hex 20)
 
-lxc-attach -n sc-jitsi -- zsh <<EOS
+lxc-attach -n eb-jitsi -- zsh <<EOS
 set -e
 prosodyctl unregister jibri auth.$JITSI_FQDN || true
 prosodyctl register jibri auth.$JITSI_FQDN $PASSWD1
@@ -54,7 +54,7 @@ echo $PASSWD2 > /root/meta/recorder-passwd
 EOS
 
 # jicofo config
-lxc-attach -n sc-jitsi -- zsh <<EOS
+lxc-attach -n eb-jitsi -- zsh <<EOS
 set -e
 hocon -f /etc/jitsi/jicofo/jicofo.conf \
     set jicofo.jibri.brewery-jid "\"JibriBrewery@internal.auth.$JITSI_FQDN\""
@@ -62,7 +62,7 @@ hocon -f /etc/jitsi/jicofo/jicofo.conf \
     set jicofo.jibri.pending-timeout "90 seconds"
 EOS
 
-lxc-attach -n sc-jitsi -- zsh <<EOS
+lxc-attach -n eb-jitsi -- zsh <<EOS
 set -e
 systemctl restart jicofo.service
 EOS
@@ -86,5 +86,5 @@ cp /root/.ssh/jibri.pub $JITSI_ROOTFS/usr/share/jitsi-meet/static/
 # HOST CUSTOMIZATION FOR JIBRI
 # ------------------------------------------------------------------------------
 # jitsi tools
-cp $MACHINES/sc-jitsi-host/usr/local/sbin/add-jibri-node /usr/local/sbin/
+cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jibri-node /usr/local/sbin/
 chmod 744 /usr/local/sbin/add-jibri-node

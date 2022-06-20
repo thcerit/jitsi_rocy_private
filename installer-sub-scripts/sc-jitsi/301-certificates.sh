@@ -46,7 +46,7 @@ echo "DNS.2 = $TURN_FQDN" >>eb-jitsi.ext
 
 # internal IPs
 i=1
-for addr in $(egrep '^address=' /etc/dnsmasq.d/sc-jitsi); do
+for addr in $(egrep '^address=' /etc/dnsmasq.d/eb-jitsi); do
     ip=$(echo $addr | rev | cut -d '/' -f1 | rev)
     echo "IP.$i = $ip" >> eb-jitsi.ext
     (( i += 1 ))

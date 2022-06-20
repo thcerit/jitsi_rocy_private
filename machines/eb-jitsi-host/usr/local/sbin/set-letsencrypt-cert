@@ -44,5 +44,5 @@ trap on_exit EXIT
 # ------------------------------------------------------------------------------
 # set certificate
 # ------------------------------------------------------------------------------
-lxc-attach -n sc-jitsi -- /usr/local/sbin/set-letsencrypt-cert $FQDN
+lxc-attach -n eb-jitsi -- /usr/local/sbin/set-letsencrypt-cert $FQDN
 COMPLETED=true

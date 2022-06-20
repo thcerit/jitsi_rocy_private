@@ -7,7 +7,7 @@ source $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
 # ------------------------------------------------------------------------------
-MACH="sc-jitsi-host"
+MACH="eb-jitsi-host"
 cd $MACHINES/$MACH
 
 # ------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ echo "------------------- JITSI CUSTOMIZATION -------------------"
 # ------------------------------------------------------------------------------
 # CUSTOMIZATION
 # ------------------------------------------------------------------------------
-JITSI_ROOTFS="/var/lib/lxc/sc-jitsi/rootfs"
+JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
 JITSI_MEET="$JITSI_ROOTFS/usr/share/jitsi-meet"
 
 if [[ ! -d "/root/jitsi-customization" ]]; then

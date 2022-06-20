@@ -7,7 +7,7 @@ source $INSTALLER/000-source
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
 # ------------------------------------------------------------------------------
-MACH="sc-jibri-template"
+MACH="eb-jibri-template"
 cd $MACHINES/$MACH
 
 ROOTFS="/var/lib/lxc/$MACH/rootfs"
@@ -190,7 +190,7 @@ EOS
 
 # snd_aloop module
 [ -z "$(egrep '^snd_aloop' /etc/modules)" ] && echo snd_aloop >>/etc/modules
-cp $MACHINES/sc-jibri-host/etc/modprobe.d/alsa-loopback.conf /etc/modprobe.d/
+cp $MACHINES/eb-jibri-host/etc/modprobe.d/alsa-loopback.conf /etc/modprobe.d/
 rmmod -f snd_aloop || true
 modprobe snd_aloop || true
 [[ "$DONT_CHECK_SND_ALOOP" = true ]] || [[ -n "$(lsmod | ack snd_aloop)" ]]
@@ -294,12 +294,12 @@ find $ROOTFS/var/log/jitsi/jibri -type f -delete
 # EPHEMERAL JIBRI CONTAINERS
 # ------------------------------------------------------------------------------
 # jibri-ephemeral-container service
-cp $MACHINES/sc-jibri-host/usr/local/sbin/jibri-ephemeral-start /usr/local/sbin/
-cp $MACHINES/sc-jibri-host/usr/local/sbin/jibri-ephemeral-stop /usr/local/sbin/
+cp $MACHINES/eb-jibri-host/usr/local/sbin/jibri-ephemeral-start /usr/local/sbin/
+cp $MACHINES/eb-jibri-host/usr/local/sbin/jibri-ephemeral-stop /usr/local/sbin/
 chmod 744 /usr/local/sbin/jibri-ephemeral-start
 chmod 744 /usr/local/sbin/jibri-ephemeral-stop
 
-cp $MACHINES/sc-jibri-host/etc/systemd/system/jibri-ephemeral-container.service \
+cp $MACHINES/eb-jibri-host/etc/systemd/system/jibri-ephemeral-container.service \
     /etc/systemd/system/
 
 systemctl daemon-reload
