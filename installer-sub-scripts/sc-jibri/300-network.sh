@@ -20,6 +20,7 @@ cd $MACHINES/$MACH
 # ------------------------------------------------------------------------------
 # changed/added system files
 cp etc/dnsmasq.d/eb-stream /etc/dnsmasq.d/
+sed -i "/stream.loc/ s/[0-9.]*$/$STREAM_ADDR/" /etc/dnsmasq.d/eb-stream
 
 # ------------------------------------------------------------------------------
 # NETWORK RELATED SERVICES
