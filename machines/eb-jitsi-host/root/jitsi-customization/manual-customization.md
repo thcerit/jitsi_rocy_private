@@ -28,6 +28,7 @@
 - `constraints.video.height.min: 360`
 - `fileRecordingsServiceSharingEnabled: false`
 - `liveStreamingEnabled: false`
+- `hiddenDomain: 'recorder.jitsi.mydomain.corp'`
 - `enableLocalRecording: false`
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
