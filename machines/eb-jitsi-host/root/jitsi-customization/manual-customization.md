@@ -70,3 +70,8 @@
 - `HIDE_INVITE_MORE_HEADER: true`
 - `JITSI_WATERMARK_LINK`
 - `MOBILE_APP_PROMO: false`
+
+#### /usr/share/jitsi-meet/index.html
+
+- `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')>
+

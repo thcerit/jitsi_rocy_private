@@ -43,7 +43,7 @@ cp $PROSODY_CONFIG $BACKUP/
     cp $BASEDIR/files/interface_config.js $JITSI_INTERFACE
 
 # ------------------------------------------------------------------------------
-# static
+# custom files
 # ------------------------------------------------------------------------------
 [[ -f "$BASEDIR/files/favicon.ico" ]] && \
     cp $BASEDIR/files/favicon.ico $JITSI_MEET/
@@ -51,3 +51,11 @@ cp $PROSODY_CONFIG $BACKUP/
     cp $BASEDIR/files/favicon.ico $JITSI_MEET/images/
 [[ -f "$BASEDIR/files/watermark.svg" ]] && \
     cp $BASEDIR/files/watermark.svg $JITSI_MEET/images/
+[[ -f "$BASEDIR/files/operator.png" ]] && \
+    cp $BASEDIR/files/operator.png $JITSI_MEET/images/
+[[ -f "$BASEDIR/files/customer.png" ]] && \
+    cp $BASEDIR/files/customer.png $JITSI_MEET/images/
+[[ -f "$BASEDIR/files/body.html" ]] && \
+    cp $BASEDIR/files/body.html $JITSI_MEET/
+[[ -f "$BASEDIR/files/custom.css" ]] && \
+    cp $BASEDIR/files/custom.css $JITSI_MEET/css/
