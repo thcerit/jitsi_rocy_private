@@ -76,3 +76,13 @@
 
 - `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')>
 
+#### /etc/jitsi/jibri/xorg-video-dummy.conf (eb-jibri-template on jibri node)
+
+```
+Section "Screen"
+  SubSection "Display"
+    Virtual 1280 720
+    #Virtual 1920 1080
+  EndSubSection
+EndSection
+```
