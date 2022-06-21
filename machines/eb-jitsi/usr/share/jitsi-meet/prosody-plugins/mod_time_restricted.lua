@@ -1,31 +1,3 @@
--- ----------------------------------------------------------------------------
--- Time Restricted
---
--- https://github.com/emrahcom/
--- ----------------------------------------------------------------------------
--- This plugin set a time limit to the conference.
---
--- 1) Copy this script to the Prosody plugins folder. It's the following folder
---    on Debian
---
---    /usr/share/jitsi-meet/prosody-plugins/
---
--- 2) Enable module in your prosody config.
---    /etc/prosody/conf.d/meet.mydomain.com.cfg.lua
---
---    Component "conference.meet.mydomain.com" "muc"
---       modules_enabled = {
---         ...
---         ...
---         "time_restricted";
---         }
---       conference_max_minutes = 10
---
--- 3) Restart the services
---
---    systemctl restart prosody.service
---    systemctl restart jicofo.service
--- ----------------------------------------------------------------------------
 local LOGLEVEL = "debug"
 local MIN = module:get_option_number("conference_max_minutes", 10)
 local TIMEOUT = MIN * 60

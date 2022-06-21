@@ -300,6 +300,12 @@ sed -i '/\s*app_secret=/a \
 sed -i '/^Component .conference\./,/admins/!b; /\s*"token_verification"/a \
 \        "token_affiliation";' \
     $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua
+sed -i '/^Component .conference\./,/admins/!b; /\s*"token_affiliation"/a \
+\        "token_owner_party";' \
+    $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua
+sed -i '/^Component .conference\./,/admins/!b; /\s*"token_owner_party"/a \
+\        "jibri_autostart";' \
+    $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua
 
 lxc-attach -n $MACH -- systemctl daemon-reload
 lxc-attach -n $MACH -- systemctl restart prosody.service

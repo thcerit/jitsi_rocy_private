@@ -1,31 +1,3 @@
--- ----------------------------------------------------------------------------
--- Jibri Autostart
---
--- https://github.com/emrahcom/
--- ----------------------------------------------------------------------------
--- This plugin automatically starts recording when the moderator comes into the
--- room.
---
--- 1) Copy this script to the Prosody plugins folder. It's the following folder
---    on Debian
---
---    /usr/share/jitsi-meet/prosody-plugins/
---
--- 2) Enable module in your prosody config.
---    /etc/prosody/conf.d/meet.mydomain.com.cfg.lua
---
---    Component "conference.meet.mydomain.com" "muc"
---       modules_enabled = {
---         ...
---         ...
---         "jibri_autostart";
---         }
---
--- 3) Restart the services
---
---    systemctl restart prosody.service
---    systemctl restart jicofo.service
--- ----------------------------------------------------------------------------
 local LOGLEVEL = "info"
 
 local is_admin = require "core.usermanager".is_admin
