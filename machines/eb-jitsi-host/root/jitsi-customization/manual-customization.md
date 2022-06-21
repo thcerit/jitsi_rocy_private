@@ -32,7 +32,7 @@
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
 - `enableWelcomePage: false`
-- ? `enableClosePage: true`
+- `enableClosePage: true`
 - `defaultLanguage: en`
 - `disableProfile: true`
 - `enableFeaturesBasedOnToken: true`

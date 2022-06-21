@@ -59,3 +59,5 @@ cp $PROSODY_CONFIG $BACKUP/
     cp $BASEDIR/files/body.html $JITSI_MEET/
 [[ -f "$BASEDIR/files/custom.css" ]] && \
     cp $BASEDIR/files/custom.css $JITSI_MEET/css/
+[[ -f "$BASEDIR/files/close2.html" ]] && \
+    cp $BASEDIR/files/close2.html $JITSI_MEET/static/
