@@ -52,20 +52,29 @@ EOF
 COMPLETED=false
 trap on_exit EXIT
 
-[[ -z "$NODE" ]] && cat <<EOF
+if [[ -z "$NODE" ]]; then
+    cat <<EOF
 Usage:
        add-jibri-node <NODE-ADDRESS> <STREAM-ADDRESS>
 EOF
+    exit 1
+fi
 
-[[ -z "$STREAM" ]] && cat <<EOF
+if [[ -z "$STREAM" ]]; then
+    cat <<EOF
 Usage:
        add-jibri-node <NODE-ADDRESS> <STREAM-ADDRESS>
 EOF
+    exit 1
+fi
 
-[[ -z "$(echo $STREAM | egrep '^[0-9.]+$')" ]] && cat <<EOF
+if [[ -z "$(echo $STREAM | egrep '^[0-9.]+$')" ]]; then
+    cat <<EOF
 Usage:
        add-jibri-node <NODE-ADDRESS> <STREAM-ADDRESS>
 EOF
+    exit 1
+fi
 
 
 # ------------------------------------------------------------------------------
