@@ -1,15 +1,19 @@
 <script>
-var activeMember = -1;
-
 function setFocusedMember() {
   try {
     const myId = APP.conference.getMyUserId();
-    const plist= APP.store.getState()["features/base/participants"];
+    const plist= APP.conference.listMembers();
     const pl = plist.findIndex(
-                 item => item.role != 'moderator' && item.id != myId);
+      i => i._role === 'participant'
+        && i._statsID !== "jibri"
+        && i._id !== myId);
 
-    if (pl && pl != -1 && activeMember != pl) { APP.UI.clickOnVideo(pl); }
-    activeMember = pl;
+    if (pl !== -1) {
+      APP.store.dispatch({
+        type: 'PIN_PARTICIPANT',
+        participant: { id: plist[pl]._id }
+      });
+    }
   } catch(e) {
     // nothing to do
   } finally {
