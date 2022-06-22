@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ARGS=$@
-LIVESTREAM="rtmp://stream.loc"
+LIVESTREAM="rtmp://stream.loc/livestream"
 
 [[ "$(whoami)" != "jibri" ]] && exec /usr/bin/ffmpeg $ARGS
 [[ -n "$(echo $ARGS | grep 'rtmp://')" ]] && exec /usr/bin/ffmpeg $ARGS
