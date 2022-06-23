@@ -6,6 +6,7 @@
 - `allow_empty_token = false`
 - `token_affiliation`
 - `token_owner_party`
+- `jibri_autostart`
 
 #### /etc/jitsi/videobridge/sip-communicator.properties
 
