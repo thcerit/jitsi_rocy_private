@@ -27,6 +27,7 @@
 - `constraints.video.height.ideal: 360`
 - `constraints.video.height.max: 360`
 - `constraints.video.height.min: 360`
+- 'fileRecordingsEnabled: true`
 - `fileRecordingsServiceSharingEnabled: false`
 - `liveStreamingEnabled: false`
 - `hiddenDomain: 'recorder.jitsi.mydomain.corp'`
