@@ -78,7 +78,14 @@
 
 - `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')>
 
-#### /etc/jitsi/jibri/xorg-video-dummy.conf (eb-jibri-template on jibri node)
+#### /etc/hosts (eb-jibri-template on jibri nodes)
+
+Do the followings if the Jibri nodes are on the same local network:
+
+- local IP for Jitsi FQDN
+- local IP for TURNS FQDN
+
+#### /etc/jitsi/jibri/xorg-video-dummy.conf (eb-jibri-template on jibri nodes)
 
 ```
 Section "Screen"
