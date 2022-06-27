@@ -51,6 +51,23 @@
   - `toggle-camera`
   - `__end`
 - `p2p.enabled: false`
+- `disabledSounds`
+  - `ASKED_TO_UNMUTE_SOUND`
+  - `E2EE_OFF_SOUND`
+  - `E2EE_ON_SOUND`
+  - `KNOCKING_PARTICIPANT_SOUND`
+  - `LIVE_STREAMING_OFF_SOUND`
+  - `LIVE_STREAMING_ON_SOUND`
+  - `NO_AUDIO_SIGNAL_SOUND`
+  - `NOISY_AUDIO_INPUT_SOUND`
+  - `OUTGOING_CALL_EXPIRED_SOUND`
+  - `OUTGOING_CALL_REJECTED_SOUND`
+  - `OUTGOING_CALL_RINGING_SOUND`
+  - `OUTGOING_CALL_START_SOUND`
+  - `REACTION_SOUND`
+  - `RECORDING_OFF_SOUND`
+  - `RECORDING_ON_SOUND`
+  - `TALK_WHILE_MUTED_SOUND`
 - `disableInviteFunctions: true`
 - `doNotStoreRoom: true`
 - `disableRemoteMute: true`
