@@ -97,7 +97,7 @@
 
 #### /etc/hosts (eb-jibri-template on jibri nodes)
 
-Do the followings if the Jibri nodes are on the same local network:
+Add the followings if the Jibri nodes are on the same local network:
 
 - local IP for Jitsi FQDN
 - local IP for TURNS FQDN
