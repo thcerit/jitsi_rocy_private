@@ -27,11 +27,12 @@
 - `constraints.video.height.ideal: 360`
 - `constraints.video.height.max: 360`
 - `constraints.video.height.min: 360`
-- 'fileRecordingsEnabled: true`
-- `fileRecordingsServiceSharingEnabled: false`
+- `recordingService.enabled: true`
+- `recordingService.sharingEnabled: false`
+- `recordingService.hideStorageWarning: true`
 - `liveStreamingEnabled: false`
 - `hiddenDomain: 'recorder.jitsi.mydomain.corp'`
-- `enableLocalRecording: false`
+- `localRecording.disable: true`
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
 - `enableWelcomePage: false`
