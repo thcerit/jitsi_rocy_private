@@ -94,7 +94,7 @@
 
 #### /usr/share/jitsi-meet/index.html
 
-- `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')>
+- `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')">
 
 #### /etc/hosts (eb-jibri-template on jibri nodes)
 
