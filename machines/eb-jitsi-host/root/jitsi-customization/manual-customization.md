@@ -9,11 +9,23 @@
 - check `token_owner_party` in `conference` component
 - check `jibri_autostart` in `conference` component
 
+Restart the service if there are any changes:
+
+```bash
+systemctl restart prosody.service
+```
+
 #### /etc/jitsi/videobridge/sip-communicator.properties (in eb-jitsi)
 
 - Disable `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS`
+
+Restart the service if there are any changes:
+
+```bash
+systemctl restart jitsi-videobridge2.service
+```
 
 #### /root/jitsi-customization/files/JITSI_FQDN-config.js
 
