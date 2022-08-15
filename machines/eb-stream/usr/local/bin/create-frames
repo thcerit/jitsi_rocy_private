@@ -9,7 +9,7 @@ STREAM=$1
 
 # -----------------------------------------------------------------------------
 function on_exit {
-    for p in $(pgrep -f "ffmpeg .*/livestream/$STREAM "); do
+    for p in $(pgrep -f "ffmpeg .* $BASE/$STREAM/frame"); do
         kill -9 $p || true
     done
 
