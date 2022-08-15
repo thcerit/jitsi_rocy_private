@@ -124,8 +124,8 @@ PASSWD2=$(cat $JITSI_ROOTFS/root/meta/recorder-passwd)
 # ------------------------------------------------------------------------------
 ssh_ apt-get -y --allow-releaseinfo-change update
 ssh_ apt-get -y install wget
-ssh_ wget $INSTALLER -O /tmp/eb
-ssh_ wget $INSTALLER_CONFIG -O /tmp/sc-jibri.conf
+ssh_ wget $INSTALLER -O /tmp/eb -T 30
+ssh_ wget $INSTALLER_CONFIG -O /tmp/sc-jibri.conf -T 30
 
 ssh_ "echo export JITSI_FQDN=$JITSI_FQDN >>/tmp/sc-jibri.conf"
 ssh_ "echo export STREAM_ADDR=$STREAM >>/tmp/sc-jibri.conf"
