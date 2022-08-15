@@ -26,7 +26,7 @@ function focusToMember() {
     var isRecorder = APP.store.getState()["features/base/config"].iAmRecorder;
 
     if (!isRecorder) return false;
-    APP.store.getState()["features/video-layout"].tileViewEnabled = false;
+    APP.store.getState()["features/video-layout"].tileViewEnabled = true;
     APP.store.getState()["features/filmstrip"].visible = false;
 
     setTimeout(function() {setFocusedMember();}, 3000);
