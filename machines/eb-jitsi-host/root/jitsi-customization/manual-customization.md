@@ -1,6 +1,6 @@
 ## Manual Customizations
 
-#### /etc/prosody/conf.avail/jitsi.mydomain.corp.cfg.lua
+#### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua
 
 - `authentication`, `app_id`, `app_secret`
 - `allow_empty_token = false` (after `app_secret` in main `VirtualHost`)
@@ -16,7 +16,7 @@
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS`
 
-#### /etc/jitsi/meet/DOMAIN-config.js
+#### /etc/jitsi/meet/JITSI_FQDN-config.js
 
 - `disableModeratorIndicator: true`
 - `disableReactions: true`
@@ -33,7 +33,7 @@
 - `recordingService.sharingEnabled: false`
 - `recordingService.hideStorageWarning: true`
 - `liveStreamingEnabled: false`
-- `hiddenDomain: 'recorder.jitsi.mydomain.corp'`
+- `hiddenDomain: 'recorder.JITSI_FQDN'`
 - `localRecording.disable: true`
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
@@ -103,14 +103,34 @@ echo $RELEASE
 
 - `<link rel="stylesheet" href="css/custom.css?v=RELEASE">
 
-#### /etc/hosts (eb-jibri-template on jibri nodes)
+#### get JMS key
+
+Run this command on Jibri nodes
+
+```bash
+curl -k https://<JMS_IP_ADDRESS>/static/jms.pub >> /root/.ssh/authorized_keys
+```
+
+#### add Jibri
+
+Run this command on `JMS`
+
+```bash
+add-jibri-node <JIBRI_NODE_IP> <STREAM_SERVER_IP>
+```
+
+#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/hosts (on jibri nodes)
 
 Add the followings if the Jibri nodes are on the same local network:
 
-- local IP for Jitsi FQDN
-- local IP for TURNS FQDN
+```
+JMS_LOCAL_IP    JITSI_FQDN
+JMS_LOCAL_IP    TURNS_FQDN
+```
 
-#### /etc/jitsi/jibri/xorg-video-dummy.conf (eb-jibri-template on jibri nodes)
+#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf
+
+On Jibri nodes:
 
 ```
 Section "Screen"
