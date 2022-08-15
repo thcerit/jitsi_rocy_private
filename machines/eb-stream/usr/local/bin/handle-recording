@@ -16,6 +16,6 @@ trap on_exit EXIT
 
 # -----------------------------------------------------------------------------
 ffmpeg -v quiet -i $BASE/$STREAM.flv -nostdin -nostats \
-    -c copy -movflags faststart $BASE/$STREAM.mp4
+    -c copy -movflags faststart -y $BASE/$STREAM.mp4
 
 rm -f $BASE/$STREAM.flv
