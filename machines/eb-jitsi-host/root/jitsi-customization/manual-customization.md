@@ -3,10 +3,12 @@
 #### /etc/prosody/conf.avail/jitsi.mydomain.corp.cfg.lua
 
 - `authentication`, `app_id`, `app_secret`
-- `allow_empty_token = false`
-- `token_affiliation`
-- `token_owner_party`
-- `jibri_autostart`
+- `allow_empty_token = false` (after `app_secret` in main `VirtualHost`)
+- `enable_domain_verification = false` (after `allow_empty_token` in main
+  `VirtualHost`)
+- `token_affiliation` (into `modules_enabled` in `conference` component)
+- `token_owner_party` (into `modules_enabled` in `conference` component)
+- `jibri_autostart` (into `modules_enabled` in `conference` component)
 
 #### /etc/jitsi/videobridge/sip-communicator.properties
 
@@ -94,7 +96,12 @@
 
 #### /usr/share/jitsi-meet/index.html
 
-- `<link rel="stylesheet" href="css/custom.css?v=$(date +'%Y%m%d%H%M%S')">
+```bash
+RELEASE=$(date +'%Y%m%d%H%M%S')
+echo $RELEASE
+```
+
+- `<link rel="stylesheet" href="css/custom.css?v=RELEASE">
 
 #### /etc/hosts (eb-jibri-template on jibri nodes)
 
