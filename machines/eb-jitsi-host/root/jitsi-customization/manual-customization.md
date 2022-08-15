@@ -1,6 +1,6 @@
 ## Manual Customizations
 
-#### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua (in eb-jitsi)
+#### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua (eb-jitsi)
 
 - check `authentication = "token"`, `app_id` and `app_secret`
 - check `allow_empty_token = false`
@@ -15,7 +15,7 @@ Restart the service if there are any changes:
 systemctl restart prosody.service
 ```
 
-#### /etc/jitsi/videobridge/sip-communicator.properties (in eb-jitsi)
+#### /etc/jitsi/videobridge/sip-communicator.properties (eb-jitsi)
 
 - Disable `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
@@ -27,7 +27,7 @@ Restart the service if there are any changes:
 systemctl restart jitsi-videobridge2.service
 ```
 
-#### /root/jitsi-customization/files/JITSI_FQDN-config.js
+#### /root/jitsi-customization/files/JITSI_FQDN-config.js (jms-host)
 
 - `disableModeratorIndicator: true`
 - `disableReactions: true`
@@ -95,7 +95,7 @@ systemctl restart jitsi-videobridge2.service
 - `notifications: []`
 - `disableChatSmileys: true`
 
-#### /root/jitsi-customization/files/interface_config.js
+#### /root/jitsi-customization/files/interface_config.js (jms-host)
 
 - `APP_NAME`
 - `DEFAULT_BACKGROUND: '#040404'`
@@ -105,51 +105,53 @@ systemctl restart jitsi-videobridge2.service
 - `JITSI_WATERMARK_LINK`
 - `MOBILE_APP_PROMO: false`
 
-#### customize.sh
+#### customize.sh (jms-host)
 
 ```bash
 cd /root/jitsi-customization
 bash customize.sh
 ```
 
-#### /usr/share/jitsi-meet/index.html
+#### /var/lib/lxc/eb-jitsi/rootfs/usr/share/jitsi-meet/index.html (jms-host)
 
-```bash
-RELEASE=$(date +'%Y%m%d%H%M%S')
-echo $RELEASE
+Add the following line into `<head>`. Use the current date instead of `RELEASE`.
+
+```html
+<link rel="stylesheet" href="css/custom.css?v=RELEASE">
 ```
 
-- `<link rel="stylesheet" href="css/custom.css?v=RELEASE">
+To get the current date:
 
-#### get JMS key
+```bash
+date +'%Y%m%d%H%M%S'
+```
 
-Run this command on Jibri nodes if `jms.pub` doesn't exist in
-`/root/.ssh/authorized_keys`.
+#### get JMS key (jibri-host)
+
+Run this command if `jms.pub` doesn't exist in `/root/.ssh/authorized_keys`.
 
 ```bash
 curl -k https://<JMS_IP_ADDRESS>/static/jms.pub >> /root/.ssh/authorized_keys
 ```
 
-#### add Jibri
-
-Run this command on `JMS`
+#### add Jibri (jms-host)
 
 ```bash
 add-jibri-node <JIBRI_NODE_IP> <STREAM_SERVER_IP>
 ```
 
-#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/hosts (on jibri nodes)
+#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/hosts (jibri-host)
 
-Add the followings if the Jibri nodes are on the same local network:
+Add the followings if the Jibri nodes are in the same local network with JMS:
 
 ```
 JMS_LOCAL_IP    JITSI_FQDN
 JMS_LOCAL_IP    TURNS_FQDN
 ```
 
-#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf
+#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf (jibri-host)
 
-On Jibri nodes:
+Update `Virtual`
 
 ```
 Section "Screen"
@@ -158,4 +160,11 @@ Section "Screen"
     #Virtual 1920 1080
   EndSubSection
 EndSection
+```
+
+#### restart Jibri (jibri-host)
+
+```bash
+systemctl stop jibri-ephemeral-container.service
+systemctl stop jibri-ephemeral-container.service
 ```
