@@ -140,7 +140,7 @@ curl -k https://<JMS_IP_ADDRESS>/static/jms.pub >> /root/.ssh/authorized_keys
 add-jibri-node <JIBRI_NODE_IP> <STREAM_SERVER_IP>
 ```
 
-#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/hosts (jibri-host)
+#### /var/lib/lxc/eb-jibri-template/rootfs/etc/hosts (jibri-host)
 
 Add the followings if the Jibri nodes are in the same local network with JMS:
 
@@ -149,7 +149,7 @@ JMS_LOCAL_IP    JITSI_FQDN
 JMS_LOCAL_IP    TURNS_FQDN
 ```
 
-#### /var/lib/lxc/eb-jibri-templates/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf (jibri-host)
+#### /var/lib/lxc/eb-jibri-template/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf (jibri-host)
 
 Update `Virtual`
 
@@ -166,5 +166,5 @@ EndSection
 
 ```bash
 systemctl stop jibri-ephemeral-container.service
-systemctl stop jibri-ephemeral-container.service
+systemctl start jibri-ephemeral-container.service
 ```
