@@ -172,11 +172,13 @@ cp /tmp/source/debian/modules/rtmp/stat.xsl \
 chown www-data: /usr/local/eb/livestream/stat/rtmp_stat.xsl
 EOS
 
-# frame tools
+# tools
 cp usr/local/bin/create-frames $ROOTFS/usr/local/bin/
 cp usr/local/bin/mark-frames $ROOTFS/usr/local/bin/
+cp usr/local/bin/handle-recording $ROOTFS/usr/local/bin/
 chmod 755 $ROOTFS/usr/local/bin/create-frames
 chmod 755 $ROOTFS/usr/local/bin/mark-frames
+chmod 755 $ROOTFS/usr/local/bin/handle-recording
 
 # nginx
 cp etc/nginx/access_list_http.conf $ROOTFS/etc/nginx/
