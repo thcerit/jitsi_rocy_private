@@ -1,40 +1,17 @@
 <script>
-function setFocusedMember() {
-  try {
-    const myId = APP.conference.getMyUserId();
-    const plist= APP.conference.listMembers();
-    const pl = plist.findIndex(
-      i => i._role === 'participant'
-        && i._statsID !== "jibri"
-        && i._id !== myId);
-
-    if (pl !== -1) {
-      APP.store.dispatch({
-        type: 'PIN_PARTICIPANT',
-        participant: { id: plist[pl]._id }
-      });
-    }
-  } catch(e) {
-    // nothing to do
-  } finally {
-    setTimeout(function() {setFocusedMember();}, 3000);
-  }
-}
-
-function focusToMember() {
+function setRecorderSettings() {
   try {
     var isRecorder = APP.store.getState()["features/base/config"].iAmRecorder;
 
     if (!isRecorder) return false;
+
     APP.store.getState()["features/video-layout"].tileViewEnabled = true;
     APP.store.getState()["features/filmstrip"].visible = false;
-
-    setTimeout(function() {setFocusedMember();}, 3000);
   } catch(e) {
-    setTimeout(function() {focusToMember();}, 3000);
+    setTimeout(function() {setRecorderSettings();}, 3000);
   }
 }
 
-focusToMember();
+setRecorderSettings();
 </script>
 
