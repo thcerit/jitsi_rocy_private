@@ -43,9 +43,9 @@ systemctl restart jitsi-videobridge2.service
 - `recordingService.enabled: true`
 - `recordingService.sharingEnabled: false`
 - `recordingService.hideStorageWarning: true`
-- `liveStreamingEnabled: false`
-- `hiddenDomain: 'recorder.JITSI_FQDN'`
 - `localRecording.disable: true`
+- `liveStreaming.enabled: false`
+- `hiddenDomain: 'recorder.JITSI_FQDN'` (this line should be added)
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
 - `enableWelcomePage: false`
