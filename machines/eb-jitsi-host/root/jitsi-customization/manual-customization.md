@@ -58,6 +58,7 @@ systemctl restart jitsi-videobridge2.service
   - `camera`
   - `chat`
   - `desktop`
+  - `hangup`
   - `microphone`
   - `profile`
   - `settings`
