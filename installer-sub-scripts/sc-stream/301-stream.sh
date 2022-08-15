@@ -141,6 +141,13 @@ EOS
 # ------------------------------------------------------------------------------
 # STREAM
 # ------------------------------------------------------------------------------
+# recordings folder
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+mkdir -p /usr/local/eb/recordings
+chown www-data: /usr/local/eb/recordings
+EOS
+
 # livestream folder
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
