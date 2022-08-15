@@ -2,13 +2,12 @@
 
 #### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua (in eb-jitsi)
 
-- `authentication`, `app_id`, `app_secret`
-- `allow_empty_token = false` (after `app_secret` in main `VirtualHost`)
-- `enable_domain_verification = false` (after `allow_empty_token` in main
-  `VirtualHost`)
-- `token_affiliation` (into `modules_enabled` in `conference` component)
-- `token_owner_party` (into `modules_enabled` in `conference` component)
-- `jibri_autostart` (into `modules_enabled` in `conference` component)
+- check `authentication = "token"`, `app_id` and `app_secret`
+- check `allow_empty_token = false`
+- check `enable_domain_verification = false`
+- check `token_affiliation` in `conference` component
+- check `token_owner_party` in `conference` component
+- check `jibri_autostart` in `conference` component
 
 #### /etc/jitsi/videobridge/sip-communicator.properties (in eb-jitsi)
 
@@ -112,7 +111,8 @@ echo $RELEASE
 
 #### get JMS key
 
-Run this command on Jibri nodes
+Run this command on Jibri nodes if `jms.pub` doesn't exist in
+`/root/.ssh/authorized_keys`.
 
 ```bash
 curl -k https://<JMS_IP_ADDRESS>/static/jms.pub >> /root/.ssh/authorized_keys

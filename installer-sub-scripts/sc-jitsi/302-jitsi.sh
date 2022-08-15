@@ -295,6 +295,9 @@ cp usr/share/jitsi-meet/prosody-plugins/*.lua \
     $ROOTFS/usr/share/jitsi-meet/prosody-plugins/
 
 sed -i '/\s*app_secret=/a \
+\    enable_domain_verification = false' \
+    $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua
+sed -i '/\s*app_secret=/a \
 \    allow_empty_token = false' \
     $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua
 sed -i '/^Component .conference\./,/admins/!b; /\s*"token_verification"/a \
