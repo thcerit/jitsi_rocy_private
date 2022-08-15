@@ -1,6 +1,6 @@
 ## Manual Customizations
 
-#### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua
+#### /etc/prosody/conf.avail/JITSI_FQDN.cfg.lua (in eb-jitsi)
 
 - `authentication`, `app_id`, `app_secret`
 - `allow_empty_token = false` (after `app_secret` in main `VirtualHost`)
@@ -10,13 +10,13 @@
 - `token_owner_party` (into `modules_enabled` in `conference` component)
 - `jibri_autostart` (into `modules_enabled` in `conference` component)
 
-#### /etc/jitsi/videobridge/sip-communicator.properties
+#### /etc/jitsi/videobridge/sip-communicator.properties (in eb-jitsi)
 
 - Disable `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS`
 
-#### /etc/jitsi/meet/JITSI_FQDN-config.js
+#### /root/jitsi-customization/files/JITSI_FQDN-config.js
 
 - `disableModeratorIndicator: true`
 - `disableReactions: true`
@@ -84,7 +84,7 @@
 - `notifications: []`
 - `disableChatSmileys: true`
 
-#### /usr/share/jitsi-meet/interface_config.js
+#### /root/jitsi-customization/files/interface_config.js
 
 - `APP_NAME`
 - `DEFAULT_BACKGROUND: '#040404'`
@@ -93,6 +93,13 @@
 - `HIDE_INVITE_MORE_HEADER: true`
 - `JITSI_WATERMARK_LINK`
 - `MOBILE_APP_PROMO: false`
+
+#### customize.sh
+
+```bash
+cd /root/jitsi-customization
+bash customize.sh
+```
 
 #### /usr/share/jitsi-meet/index.html
 
