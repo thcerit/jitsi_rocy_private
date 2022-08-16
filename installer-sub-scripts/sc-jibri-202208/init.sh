@@ -1,0 +1,1 @@
+../sc-jibri/init.sh
