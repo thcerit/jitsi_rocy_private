@@ -1,0 +1,1 @@
+../sc-jitsi/301-certificates.sh
