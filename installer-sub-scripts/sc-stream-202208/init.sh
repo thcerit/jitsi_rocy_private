@@ -1,0 +1,1 @@
+../sc-stream/init.sh
