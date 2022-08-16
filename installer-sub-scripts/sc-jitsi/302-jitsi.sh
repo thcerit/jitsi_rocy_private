@@ -415,7 +415,5 @@ done
 # HOST CUSTOMIZATION FOR JITSI
 # ------------------------------------------------------------------------------
 # jitsi tools
-cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jvb-node /usr/local/sbin/
 cp $MACHINES/eb-jitsi-host/usr/local/sbin/set-letsencrypt-cert /usr/local/sbin/
-chmod 744 /usr/local/sbin/add-jvb-node
 chmod 744 /usr/local/sbin/set-letsencrypt-cert
