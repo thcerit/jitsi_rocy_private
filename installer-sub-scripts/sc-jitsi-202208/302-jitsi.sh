@@ -405,13 +405,6 @@ fi
 lxc-attach -n $MACH -- systemctl restart jitsi-videobridge2.service
 
 # ------------------------------------------------------------------------------
-# TOOLS & SCRIPTS
-# ------------------------------------------------------------------------------
-# jicofo-log-analyzer
-cp usr/local/bin/jicofo-log-analyzer $ROOTFS/usr/local/bin/
-chmod 755 $ROOTFS/usr/local/bin/jicofo-log-analyzer
-
-# ------------------------------------------------------------------------------
 # CONTAINER SERVICES
 # ------------------------------------------------------------------------------
 lxc-stop -n $MACH
@@ -429,7 +422,5 @@ done
 # HOST CUSTOMIZATION FOR JITSI
 # ------------------------------------------------------------------------------
 # jitsi tools
-cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jvb-node /usr/local/sbin/
 cp $MACHINES/eb-jitsi-host/usr/local/sbin/set-letsencrypt-cert /usr/local/sbin/
-chmod 744 /usr/local/sbin/add-jvb-node
 chmod 744 /usr/local/sbin/set-letsencrypt-cert

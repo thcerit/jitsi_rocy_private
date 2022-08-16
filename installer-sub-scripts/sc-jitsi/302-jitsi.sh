@@ -398,13 +398,6 @@ fi
 lxc-attach -n $MACH -- systemctl restart jitsi-videobridge2.service
 
 # ------------------------------------------------------------------------------
-# TOOLS & SCRIPTS
-# ------------------------------------------------------------------------------
-# jicofo-log-analyzer
-cp usr/local/bin/jicofo-log-analyzer $ROOTFS/usr/local/bin/
-chmod 755 $ROOTFS/usr/local/bin/jicofo-log-analyzer
-
-# ------------------------------------------------------------------------------
 # CONTAINER SERVICES
 # ------------------------------------------------------------------------------
 lxc-stop -n $MACH
