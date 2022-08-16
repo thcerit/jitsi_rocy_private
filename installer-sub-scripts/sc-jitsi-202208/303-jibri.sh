@@ -86,5 +86,6 @@ cp /root/.ssh/jibri.pub $JITSI_ROOTFS/usr/share/jitsi-meet/static/
 # HOST CUSTOMIZATION FOR JIBRI
 # ------------------------------------------------------------------------------
 # jitsi tools
-cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jibri-node /usr/local/sbin/
+cp $MACHINES/eb-jitsi-host/usr/local/sbin/add-jibri-node.sc.202208 \
+    /usr/local/sbin/add-jibri-node
 chmod 744 /usr/local/sbin/add-jibri-node
