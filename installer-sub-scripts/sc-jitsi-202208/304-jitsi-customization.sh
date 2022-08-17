@@ -57,22 +57,39 @@ sed -i "/^\s*\/\/ disablePolls:/a \
 sed -i "/^\s*\/\/ disableAudioLevels:/a \
 \    disableAudioLevels: true," \
     $JITSI_MEET_CONFIG
-sed -i "/\s*enableNoAudioDetection:/ s/true/false/" \
-    $JITSI_MEET_CONFIG
-sed -i "/\s*enableNoisyMicDetection:/ s/true/false/" \
-    $JITSI_MEET_CONFIG
+sed -i "/\s*enableNoAudioDetection:/ s/true/false/" $JITSI_MEET_CONFIG
+sed -i "/\s*enableNoisyMicDetection:/ s/true/false/" $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ resolution:/a \
 \    resolution: 360," \
     $JITSI_MEET_CONFIG
-sed -i "/^\s*\/\/ resolution of 720p/a \
-\    constraints: {\
-\      video: {\
-\        height: {\
-\          ideal: 360,\
-\          max: 360,\
-\          min: 360,\
-\        },\
-\      },\
+sed -i "/^\s*\/\/ constraints:/i \
+\    constraints: {\\
+\      video: {\\
+\        height: {\\
+\          ideal: 360,\\
+\          max: 360,\\
+\          min: 360,\\
+\        },\\
+\      },\\
+\    }," \
+    $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ recordingService:/i \
+\    hiddenDomain: 'recorder.$JITSI_FQDN',\\
+\\\
+\    recordingService: {\\
+\      enabled: true,\\
+\      sharingEnabled: false,\\
+\      hideStorageWarning: true,\\
+\    }," \
+    $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ localRecording:/i \
+\    localRecording: {\\
+\      disable: true,\\
+\    }," \
+    $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ liveStreaming:/i \
+\    liveStreaming: {\\
+\      enabled: true,\\
 \    }," \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ hideLobbyButton:/a \
@@ -81,8 +98,7 @@ sed -i "/^\s*\/\/ hideLobbyButton:/a \
 sed -i "/^\s*\/\/ requireDisplayName:/a \
 \    requireDisplayName: true," \
     $JITSI_MEET_CONFIG
-sed -i "/^\s*enableWelcomePage:/ s/true/false/" \
-    $JITSI_MEET_CONFIG
+sed -i "/^\s*enableWelcomePage:/ s/true/false/" $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ enableClosePage:/a \
 \    enableClosePage: true," \
     $JITSI_MEET_CONFIG
@@ -98,6 +114,41 @@ sed -i "/^\s*\/\/ enableFeaturesBasedOnToken:/a \
 sed -i "/^\s*\/\/ enableInsecureRoomNameWarning:/a \
 \    enableInsecureRoomNameWarning: false," \
     $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ toolbarButtons:/i \
+\    toolbarButtons: [\\
+\      'camera',\\
+\      'chat',\\
+\      'desktop',\\
+\      'hangup',\\
+\      'microphone',\\
+\      'profile',\\
+\      'settings',\\
+\      'tileview',\\
+\      'toggle-camera',\\
+\    ]," \
+    $JITSI_MEET_CONFIG
+# p2p.enabled
+sed -i "/^\s*enabled:/ s/true/false/" $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ disabledSounds:/a \
+\    disabledSounds: [\\
+\      'ASKED_TO_UNMUTE_SOUND',\\
+\      'E2EE_OFF_SOUND',\\
+\      'E2EE_ON_SOUND',\\
+\      'KNOCKING_PARTICIPANT_SOUND',\\
+\      'LIVE_STREAMING_OFF_SOUND',\\
+\      'LIVE_STREAMING_ON_SOUND',\\
+\      'NO_AUDIO_SIGNAL_SOUND',\\
+\      'NOISY_AUDIO_INPUT_SOUND',\\
+\      'OUTGOING_CALL_EXPIRED_SOUND',\\
+\      'OUTGOING_CALL_REJECTED_SOUND',\\
+\      'OUTGOING_CALL_RINGING_SOUND',\\
+\      'OUTGOING_CALL_START_SOUND',\\
+\      'REACTION_SOUND',\\
+\      'RECORDING_OFF_SOUND',\\
+\      'RECORDING_ON_SOUND',\\
+\      'TALK_WHILE_MUTED_SOUND',\\
+\    ]," \
+    $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ disableInviteFunctions:/a \
 \    disableInviteFunctions: true," \
     $JITSI_MEET_CONFIG
@@ -106,6 +157,13 @@ sed -i "/^\s*\/\/ doNotStoreRoom:/a \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ disableRemoteMute:/a \
 \    disableRemoteMute: true," \
+    $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ breakoutRooms:/i \
+\    breakoutRooms: {\\
+\      hideAddRoomButton: true,\\
+\      hideAutoAssignButton: true,\\
+\      hideJoinRoomButton: true,\\
+\    }," \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ disableAddingBackgroundImages:/a \
 \    disableAddingBackgroundImages: true," \

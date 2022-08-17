@@ -25,12 +25,12 @@ systemctl restart jitsi-videobridge2.service
 - `constraints.video.height.ideal: 360`
 - `constraints.video.height.max: 360`
 - `constraints.video.height.min: 360`
+- `hiddenDomain: 'recorder.JITSI_FQDN'` (this line should be added)
 - `recordingService.enabled: true`
 - `recordingService.sharingEnabled: false`
 - `recordingService.hideStorageWarning: true`
 - `localRecording.disable: true`
 - `liveStreaming.enabled: false`
-- `hiddenDomain: 'recorder.JITSI_FQDN'` (this line should be added)
 - `hideLobbyButton: true`
 - `requireDisplayName: true`
 - `enableWelcomePage: false`
@@ -49,7 +49,6 @@ systemctl restart jitsi-videobridge2.service
   - `settings`
   - `tileview`
   - `toggle-camera`
-  - `__end`
 - `p2p.enabled: false`
 - `disabledSounds`
   - `ASKED_TO_UNMUTE_SOUND`
