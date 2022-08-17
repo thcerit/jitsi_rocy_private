@@ -12,15 +12,6 @@ If there is no access to remote STUN, apply followings:
 systemctl restart jitsi-videobridge2.service
 ```
 
-#### /root/jitsi-customization/files/interface_config.js (jms-host)
-
-- `APP_NAME`
-- `DISABLE_DOMINANT_SPEAKER_INDICATOR: true`
-- `GENERATE_ROOMNAMES_ON_WELCOME_PAGE: false`
-- `HIDE_INVITE_MORE_HEADER: true`
-- `JITSI_WATERMARK_LINK`
-- `MOBILE_APP_PROMO: false`
-
 #### get JMS key (jibri-host)
 
 Run this command if `jms.pub` doesn't exist in `/root/.ssh/authorized_keys`.
