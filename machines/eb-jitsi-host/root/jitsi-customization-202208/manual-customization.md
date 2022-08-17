@@ -35,7 +35,7 @@ systemctl restart jitsi-videobridge2.service
 - `requireDisplayName: true`
 - `enableWelcomePage: false`
 - `enableClosePage: true`
-- `defaultLanguage: en`
+- `defaultLanguage: 'en'`
 - `disableProfile: true`
 - `enableFeaturesBasedOnToken: true`
 - `enableInsecureRoomNameWarning: false`
