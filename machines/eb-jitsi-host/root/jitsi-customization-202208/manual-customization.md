@@ -15,7 +15,6 @@ systemctl restart jitsi-videobridge2.service
 #### /root/jitsi-customization/files/interface_config.js (jms-host)
 
 - `APP_NAME`
-- `DEFAULT_BACKGROUND: '#040404'`
 - `DISABLE_DOMINANT_SPEAKER_INDICATOR: true`
 - `GENERATE_ROOMNAMES_ON_WELCOME_PAGE: false`
 - `HIDE_INVITE_MORE_HEADER: true`

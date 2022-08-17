@@ -46,7 +46,6 @@ sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/customize.sh
 # ------------------------------------------------------------------------------
 # config.js
 # ------------------------------------------------------------------------------
-# backup
 cp $JITSI_MEET_CONFIG $JITSI_MEET_CONFIG.org
 
 # p2p.enabled (change this line before any updates)
@@ -192,8 +191,18 @@ sed -i "/^\s*\/\/ disableChatSmileys:/a \
 # ------------------------------------------------------------------------------
 # interface_config.js
 # ------------------------------------------------------------------------------
-# backup
 cp $JITSI_MEET_INTERFACE $JITSI_MEET_INTERFACE.org
+
+sed -i "/^\s*APP_NAME:/ s/'.*'/'Meet'/" $JITSI_MEET_INTERFACE
+sed -i "/^\s*DISABLE_DOMINANT_SPEAKER_INDICATOR:/ s/false/true/" \
+    $JITSI_MEET_INTERFACE
+sed -i "/^\s*GENERATE_ROOMNAMES_ON_WELCOME_PAGE:/ s/true/false/" \
+    $JITSI_MEET_INTERFACE
+sed -i "/^\s*HIDE_INVITE_MORE_HEADER:/ s/false/true/" $JITSI_MEET_INTERFACE
+sed -i "/^\s*JITSI_WATERMARK_LINK:/ s/'.*'/''/" $JITSI_MEET_INTERFACE
+sed -i "/^\s*MOBILE_APP_PROMO:/ s/true/false/" $JITSI_MEET_INTERFACE
+sed -i "/^\s*NATIVE_APP_NAME:/ s/'.*'/''/" $JITSI_MEET_INTERFACE
+sed -i "/^\s*SHOW_JITSI_WATERMARK:/ s/true/false/" $JITSI_MEET_INTERFACE
 
 # ------------------------------------------------------------------------------
 # custom files
