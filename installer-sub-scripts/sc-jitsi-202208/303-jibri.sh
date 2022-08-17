@@ -22,7 +22,7 @@ echo "-------------------------- $MACH --------------------------"
 # ------------------------------------------------------------------------------
 # PROSODY
 # ------------------------------------------------------------------------------
-# prosody config
+# config
 cp $MACHINES/eb-jitsi/etc/prosody/conf.avail/recorder.cfg.lua \
    $JITSI_ROOTFS/etc/prosody/conf.avail/recorder.$JITSI_FQDN.cfg.lua
 sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/" \
