@@ -41,7 +41,7 @@ if [[ ! -d "/root/jitsi-customization" ]]; then
     cp $JITSI_ROOTFS//usr/share/jitsi-meet/interface_config.js \
         /root/jitsi-customization/files/
 
-    bash /root/jitsi-customization/customize.sh
+    #bash /root/jitsi-customization/customize.sh
 else
     echo "There is already an old customization folder."
     echo "Automatic customization skipped."
