@@ -34,23 +34,3 @@ Add the followings if the Jibri nodes are in the same local network with JMS:
 JMS_LOCAL_IP    JITSI_FQDN
 JMS_LOCAL_IP    TURNS_FQDN
 ```
-
-#### /var/lib/lxc/eb-jibri-template/rootfs/etc/jitsi/jibri/xorg-video-dummy.conf (jibri-host)
-
-Update `Virtual`
-
-```
-Section "Screen"
-  SubSection "Display"
-    Virtual 1280 720
-    #Virtual 1920 1080
-  EndSubSection
-EndSection
-```
-
-#### restart Jibri (jibri-host)
-
-```bash
-systemctl stop jibri-ephemeral-container.service
-systemctl start jibri-ephemeral-container.service
-```
