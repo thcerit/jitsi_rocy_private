@@ -273,6 +273,13 @@ systemctl daemon-reload
 systemctl enable jibri-ephemeral-config.service
 EOS
 
+# jibri service
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+systemctl enable jibri.service
+systemctl start jibri.service
+EOS
+
 # jibri vnc
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
