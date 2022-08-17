@@ -180,19 +180,27 @@ chmod 755 $ROOTFS/usr/local/bin/create-frames
 chmod 755 $ROOTFS/usr/local/bin/mark-frames
 chmod 755 $ROOTFS/usr/local/bin/handle-recording
 
-# nginx
+# ------------------------------------------------------------------------------
+# NGINX
+# ------------------------------------------------------------------------------
+cp $ROOTFS/etc/nginx/nginx.conf $ROOTFS/etc/nginx/nginx.conf.org
+
 cp etc/nginx/access_list_http.conf $ROOTFS/etc/nginx/
 cp etc/nginx/access_list_rtmp_play.conf $ROOTFS/etc/nginx/
 cp etc/nginx/access_list_rtmp_publish.conf $ROOTFS/etc/nginx/
+
 cp etc/nginx/modules-available/90-rtmp.conf \
     $ROOTFS/etc/nginx/modules-available/
 ln -s ../modules-available/90-rtmp.conf $ROOTFS/etc/nginx/modules-enabled/
+
 cp etc/nginx/sites-available/livestream.conf \
     $ROOTFS/etc/nginx/sites-available/
 ln -s ../sites-available/livestream.conf $ROOTFS/etc/nginx/sites-enabled/
+
 rm $ROOTFS/etc/nginx/sites-enabled/default
 sed -i 's/^worker_processes .*$/worker_processes 1;/' \
     $ROOTFS/etc/nginx/nginx.conf
+
 lxc-attach -n $MACH -- systemctl stop nginx.service
 lxc-attach -n $MACH -- systemctl start nginx.service
 
