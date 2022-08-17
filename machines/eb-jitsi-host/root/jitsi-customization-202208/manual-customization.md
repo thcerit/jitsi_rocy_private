@@ -2,7 +2,7 @@
 
 #### /etc/jitsi/videobridge/sip-communicator.properties (eb-jitsi)
 
-If there is no access to remote STUN, apply the followings:
+If there is no access to remote STUN, apply followings:
 
 - Disable `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`
 - Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
@@ -11,12 +11,6 @@ If there is no access to remote STUN, apply the followings:
 ```bash
 systemctl restart jitsi-videobridge2.service
 ```
-
-#### /root/jitsi-customization/files/JITSI_FQDN-config.js (jms-host)
-
-- `recordingService.enabled: true`
-- `recordingService.sharingEnabled: false`
-- `recordingService.hideStorageWarning: true`
 
 #### /root/jitsi-customization/files/interface_config.js (jms-host)
 
@@ -27,13 +21,6 @@ systemctl restart jitsi-videobridge2.service
 - `HIDE_INVITE_MORE_HEADER: true`
 - `JITSI_WATERMARK_LINK`
 - `MOBILE_APP_PROMO: false`
-
-#### customize.sh (jms-host)
-
-```bash
-cd /root/jitsi-customization
-bash customize.sh
-```
 
 #### get JMS key (jibri-host)
 
