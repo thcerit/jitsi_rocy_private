@@ -179,6 +179,13 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get -y purge upower
 EOS
 
+# hold
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+export DEBIAN_FRONTEND=noninteractive
+apt-mark hold jibri
+EOS
+
 # ------------------------------------------------------------------------------
 # SYSTEM CONFIGURATION
 # ------------------------------------------------------------------------------
