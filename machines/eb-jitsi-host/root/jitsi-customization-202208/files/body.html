@@ -1,0 +1,17 @@
+<script>
+function setRecorderSettings() {
+  try {
+    var isRecorder = APP.store.getState()["features/base/config"].iAmRecorder;
+
+    if (!isRecorder) return false;
+
+    APP.store.getState()["features/video-layout"].tileViewEnabled = true;
+    APP.store.getState()["features/filmstrip"].visible = false;
+  } catch(e) {
+    setTimeout(function() {setRecorderSettings();}, 3000);
+  }
+}
+
+setRecorderSettings();
+</script>
+

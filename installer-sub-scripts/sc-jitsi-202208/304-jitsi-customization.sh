@@ -25,7 +25,7 @@ JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
 JITSI_MEET="$JITSI_ROOTFS/usr/share/jitsi-meet"
 
 if [[ ! -d "/root/jitsi-customization" ]]; then
-    cp -arp root/jitsi-customization /root/
+    cp -arp root/jitsi-customization-202208 /root/jitsi-customization
 
     sed -i "s/___TURN_FQDN___/$TURN_FQDN/g" \
         /root/jitsi-customization/README.md
