@@ -26,6 +26,10 @@ JITSI_MEET_CONFIG="$JITSI_ROOTFS/etc/jitsi/meet/$JITSI_FQDN-config.js"
 JITSI_MEET_INTERFACE="$JITSI_ROOTFS/usr/share/jitsi-meet/interface_config.js"
 FOLDER="/root/jitsi-customization"
 
+# backup
+cp $JITSI_MEET_CONFIG $JITSI_MEET_CONFIG.org
+cp $JITSI_MEET_INTERFACE $JITSI_MEET_INTERFACE.org
+
 # is there an old customization folder?
 if [[ -d "/root/jitsi-customization" ]]; then
     FOLDER="/root/jitsi-customization-new"
