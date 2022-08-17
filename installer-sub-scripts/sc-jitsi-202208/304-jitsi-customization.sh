@@ -178,6 +178,9 @@ sed -i "/^\s*\/\/ hideConferenceSubject:/a \
 sed -i "/^\s*\/\/ hideParticipantsStats:/a \
 \    hideParticipantsStats: true," \
     $JITSI_MEET_CONFIG
+sed -i "/^\s*\/\/ notifications:/i \
+\    notifications: []," \
+    $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ disableChatSmileys:/a \
 \    disableChatSmileys: true," \
     $JITSI_MEET_CONFIG
