@@ -37,7 +37,7 @@ lxc-attach -n eb-jitsi -- \
 
 ```bash
 diff /var/lib/lxc/eb-jitsi/rootfs/etc/jitsi/meet/___JITSI_FQDN___-config.js \
-    files/jitsi.mydomain.corp-config.js
+    files/___JITSI_FQDN___-config.js
 diff /var/lib/lxc/eb-jitsi/rootfs/usr/share/jitsi-meet/interface_config.js \
     files/interface_config.js
 ```
