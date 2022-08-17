@@ -75,7 +75,7 @@ sed -i "/^\s*\/\/ constraints:/i \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ recordingService:/i \
 \    hiddenDomain: 'recorder.$JITSI_FQDN',\\
-\\\
+\\
 \    recordingService: {\\
 \      enabled: true,\\
 \      sharingEnabled: false,\\
