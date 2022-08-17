@@ -270,7 +270,7 @@ echo 'ExecStartPost=systemctl restart coturn.service' >> \
 lxc-attach -n $MACH -- systemctl daemon-reload
 
 # ------------------------------------------------------------------------------
-# coturn
+# COTURN
 # ------------------------------------------------------------------------------
 cp $ROOTFS/etc/turnserver.conf $ROOTFS/etc/turnserver.conf.org
 
@@ -289,7 +289,7 @@ systemctl restart coturn.service
 EOS
 
 # ------------------------------------------------------------------------------
-# prosody
+# PROSODY
 # ------------------------------------------------------------------------------
 cp $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua \
     $ROOTFS/etc/prosody/conf.avail/$JITSI_FQDN.cfg.lua.org
@@ -332,7 +332,7 @@ lxc-attach -n $MACH -- systemctl daemon-reload
 lxc-attach -n $MACH -- systemctl restart prosody.service
 
 # ------------------------------------------------------------------------------
-# jicofo
+# JICOFO
 # ------------------------------------------------------------------------------
 cp $ROOTFS/etc/jitsi/jicofo/config $ROOTFS/etc/jitsi/jicofo/config.org
 cp $ROOTFS/etc/jitsi/jicofo/jicofo.conf $ROOTFS/etc/jitsi/jicofo/jicofo.conf.org
@@ -352,7 +352,7 @@ EOS
 lxc-attach -n $MACH -- systemctl restart jicofo.service
 
 # ------------------------------------------------------------------------------
-# nginx
+# NGINX
 # ------------------------------------------------------------------------------
 cp $ROOTFS/etc/nginx/nginx.conf $ROOTFS/etc/nginx/nginx.conf.org
 cp $ROOTFS/etc/nginx/sites-available/$JITSI_FQDN.conf \
@@ -393,7 +393,7 @@ lxc-attach -n $MACH -- systemctl stop nginx.service
 lxc-attach -n $MACH -- systemctl start nginx.service
 
 # ------------------------------------------------------------------------------
-# jvb
+# JVB
 # ------------------------------------------------------------------------------
 cp $ROOTFS/etc/jitsi/videobridge/config $ROOTFS/etc/jitsi/videobridge/config.org
 cp $ROOTFS/etc/jitsi/videobridge/jvb.conf \

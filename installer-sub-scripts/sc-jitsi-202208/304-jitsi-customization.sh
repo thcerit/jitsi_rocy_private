@@ -23,7 +23,7 @@ echo
 echo "------------------- JITSI CUSTOMIZATION -------------------"
 
 # ------------------------------------------------------------------------------
-# customization folder
+# JITSI-CUSTOMIZATION
 # ------------------------------------------------------------------------------
 FOLDER="/root/jitsi-customization"
 
@@ -44,7 +44,7 @@ sed -i "s/___TURN_FQDN___/$TURN_FQDN/g" $FOLDER/customize.sh
 sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/customize.sh
 
 # ------------------------------------------------------------------------------
-# config.js
+# CONFIG.JS
 # ------------------------------------------------------------------------------
 cp $JITSI_MEET_CONFIG $JITSI_MEET_CONFIG.org
 
@@ -189,7 +189,7 @@ sed -i "/^\s*\/\/ disableChatSmileys:/a \
     $JITSI_MEET_CONFIG
 
 # ------------------------------------------------------------------------------
-# interface_config.js
+# INTERFACE_CONFIG.JS
 # ------------------------------------------------------------------------------
 cp $JITSI_MEET_INTERFACE $JITSI_MEET_INTERFACE.org
 
@@ -205,7 +205,7 @@ sed -i "/^\s*NATIVE_APP_NAME:/ s/'.*'/''/" $JITSI_MEET_INTERFACE
 sed -i "/^\s*SHOW_JITSI_WATERMARK:/ s/true/false/" $JITSI_MEET_INTERFACE
 
 # ------------------------------------------------------------------------------
-# custom files
+# CUSTOM FILES
 # ------------------------------------------------------------------------------
 cp $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico \
     $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico.org
@@ -240,7 +240,7 @@ sed -i "/css.all.css/a \
     $JITSI_ROOTFS/usr/share/jitsi-meet/index.html
 
 # ------------------------------------------------------------------------------
-# get a copy of changed files
+# CHANGED FILES
 # ------------------------------------------------------------------------------
 cp $JITSI_MEET_CONFIG $FOLDER/files/
 cp $JITSI_MEET_INTERFACE $FOLDER/files/
