@@ -14,11 +14,9 @@ systemctl restart jitsi-videobridge2.service
 
 #### /root/jitsi-customization/files/JITSI_FQDN-config.js (jms-host)
 
-- `hiddenDomain: 'recorder.JITSI_FQDN'` (this line should be added)
 - `recordingService.enabled: true`
 - `recordingService.sharingEnabled: false`
 - `recordingService.hideStorageWarning: true`
-- `notifications: []`
 
 #### /root/jitsi-customization/files/interface_config.js (jms-host)
 
@@ -35,20 +33,6 @@ systemctl restart jitsi-videobridge2.service
 ```bash
 cd /root/jitsi-customization
 bash customize.sh
-```
-
-#### /var/lib/lxc/eb-jitsi/rootfs/usr/share/jitsi-meet/index.html (jms-host)
-
-Add the following line into `<head>`. Use the current date instead of `RELEASE`.
-
-```html
-<link rel="stylesheet" href="css/custom.css?v=RELEASE">
-```
-
-To get the current date:
-
-```bash
-date +'%Y%m%d%H%M%S'
 ```
 
 #### get JMS key (jibri-host)

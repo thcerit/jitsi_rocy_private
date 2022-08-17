@@ -10,6 +10,10 @@ source $INSTALLER/000-source
 MACH="eb-jitsi-host"
 cd $MACHINES/$MACH
 
+JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
+JITSI_MEET_CONFIG="$JITSI_ROOTFS/etc/jitsi/meet/$JITSI_FQDN-config.js"
+JITSI_MEET_INTERFACE="$JITSI_ROOTFS/usr/share/jitsi-meet/interface_config.js"
+
 # ------------------------------------------------------------------------------
 # INIT
 # ------------------------------------------------------------------------------
@@ -19,16 +23,9 @@ echo
 echo "------------------- JITSI CUSTOMIZATION -------------------"
 
 # ------------------------------------------------------------------------------
-# CUSTOMIZATION
+# customization folder
 # ------------------------------------------------------------------------------
-JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
-JITSI_MEET_CONFIG="$JITSI_ROOTFS/etc/jitsi/meet/$JITSI_FQDN-config.js"
-JITSI_MEET_INTERFACE="$JITSI_ROOTFS/usr/share/jitsi-meet/interface_config.js"
 FOLDER="/root/jitsi-customization"
-
-# backup
-cp $JITSI_MEET_CONFIG $JITSI_MEET_CONFIG.org
-cp $JITSI_MEET_INTERFACE $JITSI_MEET_INTERFACE.org
 
 # is there an old customization folder?
 if [[ -d "/root/jitsi-customization" ]]; then
@@ -46,7 +43,15 @@ sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/README.md
 sed -i "s/___TURN_FQDN___/$TURN_FQDN/g" $FOLDER/customize.sh
 sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/customize.sh
 
+# ------------------------------------------------------------------------------
 # config.js
+# ------------------------------------------------------------------------------
+# backup
+cp $JITSI_MEET_CONFIG $JITSI_MEET_CONFIG.org
+
+# p2p.enabled (change this line before any updates)
+sed -i "/^        enabled:/ s/true/false/" $JITSI_MEET_CONFIG
+
 sed -i "/^\s*\/\/ disableModeratorIndicator:/a \
 \    disableModeratorIndicator: true," \
     $JITSI_MEET_CONFIG
@@ -94,7 +99,7 @@ sed -i "/^\s*\/\/ localRecording:/i \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ liveStreaming:/i \
 \    liveStreaming: {\\
-\      enabled: true,\\
+\      enabled: false,\\
 \    }," \
     $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ hideLobbyButton:/a \
@@ -132,8 +137,6 @@ sed -i "/^\s*\/\/ toolbarButtons:/i \
 \      'toggle-camera',\\
 \    ]," \
     $JITSI_MEET_CONFIG
-# p2p.enabled
-sed -i "/^\s*enabled:/ s/true/false/" $JITSI_MEET_CONFIG
 sed -i "/^\s*\/\/ disabledSounds:/a \
 \    disabledSounds: [\\
 \      'ASKED_TO_UNMUTE_SOUND',\\
@@ -186,9 +189,15 @@ sed -i "/^\s*\/\/ disableChatSmileys:/a \
 \    disableChatSmileys: true," \
     $JITSI_MEET_CONFIG
 
+# ------------------------------------------------------------------------------
 # interface_config.js
+# ------------------------------------------------------------------------------
+# backup
+cp $JITSI_MEET_INTERFACE $JITSI_MEET_INTERFACE.org
 
+# ------------------------------------------------------------------------------
 # custom files
+# ------------------------------------------------------------------------------
 cp $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico \
     $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico.org
 cp $FOLDER/files/favicon.ico $JITSI_ROOTFS/usr/share/jitsi-meet/
@@ -221,6 +230,8 @@ sed -i "/css.all.css/a \
 \    <link rel=\"stylesheet\" href=\"css\/custom.css?v=$VER\">" \
     $JITSI_ROOTFS/usr/share/jitsi-meet/index.html
 
+# ------------------------------------------------------------------------------
 # get a copy of changed files
+# ------------------------------------------------------------------------------
 cp $JITSI_MEET_CONFIG $FOLDER/files/
 cp $JITSI_MEET_INTERFACE $FOLDER/files/
