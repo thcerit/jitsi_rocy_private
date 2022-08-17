@@ -8,8 +8,6 @@ set -e
 #     bash customize.sh
 # ------------------------------------------------------------------------------
 BASEDIR=$(dirname $0)
-JITSI_VERSION=$(lxc-attach -n eb-jitsi -- apt-cache policy jitsi-meet | \
-                     grep Installed | cut -d: -f2 | xargs)
 JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
 JITSI_MEET="$JITSI_ROOTFS/usr/share/jitsi-meet"
 JITSI_CONFIG="$JITSI_ROOTFS/etc/jitsi/meet/___JITSI_FQDN___-config.js"
@@ -51,6 +49,8 @@ cp $PROSODY_CONFIG $BACKUP/
     cp $BASEDIR/files/favicon.ico $JITSI_MEET/images/
 [[ -f "$BASEDIR/files/watermark.svg" ]] && \
     cp $BASEDIR/files/watermark.svg $JITSI_MEET/images/
+[[ -f "$BASEDIR/files/watermark.png" ]] && \
+    cp $BASEDIR/files/watermark.png $JITSI_MEET/images/
 [[ -f "$BASEDIR/files/operator.png" ]] && \
     cp $BASEDIR/files/operator.png $JITSI_MEET/images/
 [[ -f "$BASEDIR/files/customer.png" ]] && \
