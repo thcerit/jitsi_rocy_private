@@ -20,7 +20,7 @@ echo
 echo "-------------------------- $MACH --------------------------"
 
 # ------------------------------------------------------------------------------
-# JITSI CUSTOMIZATION FOR JIBRI
+# PROSODY
 # ------------------------------------------------------------------------------
 # prosody config
 cp $MACHINES/eb-jitsi/etc/prosody/conf.avail/recorder.cfg.lua \
@@ -53,7 +53,9 @@ echo $PASSWD1 > /root/meta/jibri-passwd
 echo $PASSWD2 > /root/meta/recorder-passwd
 EOS
 
-# jicofo config
+# ------------------------------------------------------------------------------
+# JICOFO
+# ------------------------------------------------------------------------------
 lxc-attach -n eb-jitsi -- zsh <<EOS
 set -e
 hocon -f /etc/jitsi/jicofo/jicofo.conf \
