@@ -46,6 +46,7 @@ sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/README.md
 sed -i "s/___TURN_FQDN___/$TURN_FQDN/g" $FOLDER/customize.sh
 sed -i "s/___JITSI_FQDN___/$JITSI_FQDN/g" $FOLDER/customize.sh
 
+# config.js
 sed -i "/^\s*\/\/ disableModeratorIndicator:/a \
 \    disableModeratorIndicator: true," \
     $JITSI_MEET_CONFIG
@@ -185,5 +186,41 @@ sed -i "/^\s*\/\/ disableChatSmileys:/a \
 \    disableChatSmileys: true," \
     $JITSI_MEET_CONFIG
 
+# interface_config.js
+
+# custom files
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/favicon.ico.org
+cp $FOLDER/files/favicon.ico $JITSI_ROOTFS/usr/share/jitsi-meet/
+
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/images/favicon.ico \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/images/favicon.ico.org
+cp $FOLDER/files/favicon.ico $JITSI_ROOTFS/usr/share/jitsi-meet/images/
+
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/images/watermark.svg \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/images/watermark.svg.org
+cp $FOLDER/files/watermark.svg $JITSI_ROOTFS/usr/share/jitsi-meet/images/
+
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/body.html \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/body.html.org
+cp $FOLDER/files/body.html $JITSI_ROOTFS/usr/share/jitsi-meet/
+
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/static/close2.html \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/static/close2.html.org
+cp $FOLDER/files/close2.html $JITSI_ROOTFS/usr/share/jitsi-meet/static
+
+cp $FOLDER/files/operator.png $JITSI_ROOTFS/usr/share/jitsi-meet/images/
+cp $FOLDER/files/customer.png $JITSI_ROOTFS/usr/share/jitsi-meet/images/
+cp $FOLDER/files/custom.css $JITSI_ROOTFS/usr/share/jitsi-meet/css/
+
+cp $JITSI_ROOTFS/usr/share/jitsi-meet/index.html \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/index.html.org
+
+VER=$(date +'%Y%m%d%H%M%S')
+sed -i "/css.all.css/a \
+\    <link rel=\"stylesheet\" href=\"css\/custom.css?v=$VER\">" \
+    $JITSI_ROOTFS/usr/share/jitsi-meet/index.html
+
+# get a copy of changed files
 cp $JITSI_MEET_CONFIG $FOLDER/files/
 cp $JITSI_MEET_INTERFACE $FOLDER/files/
