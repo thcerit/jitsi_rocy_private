@@ -213,6 +213,14 @@ apt-get $APT_PROXY_OPTION -y install \
     jitsi-meet-tokens=1.0.6447-1
 EOS
 
+# hold
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+export DEBIAN_FRONTEND=noninteractive
+apt-mark hold jitsi-meet jitsi-meet-web jitsi-meet-web-config \
+    jitsi-meet-prosody jitsi-videobridge2 jicofo jitsi-meet-tokens
+EOS
+
 # ------------------------------------------------------------------------------
 # EXTERNAL IP
 # ------------------------------------------------------------------------------
