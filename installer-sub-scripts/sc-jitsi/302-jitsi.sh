@@ -206,6 +206,15 @@ debconf-set-selections <<< \
 apt-get $APT_PROXY_OPTION -y install jitsi-meet-tokens
 EOS
 
+# hold
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+export DEBIAN_FRONTEND=noninteractive
+apt-mark hold jitsi-meet jitsi-meet-web jitsi-meet-web-config \
+    jitsi-meet-prosody jitsi-videobridge2 jicofo
+apt-mark hold jitsi-meet-tokens
+EOS
+
 # ------------------------------------------------------------------------------
 # EXTERNAL IP
 # ------------------------------------------------------------------------------
@@ -393,6 +402,15 @@ cp $ROOTFS/etc/jitsi/videobridge/jvb.conf \
     $ROOTFS/etc/jitsi/videobridge/jvb.conf.org
 cp $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties \
     $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties.org
+
+# meta
+lxc-attach -n $MACH -- zsh <<EOS
+set -e
+mkdir -p /root/meta
+VERSION=$(apt-cache policy jitsi-videobridge2 | grep Installed | rev | \
+    cut -d' ' -f1 | rev)
+echo $VERSION > /root/meta/jvb-version
+EOS
 
 # default memory limit
 sed -i '/^JVB_SECRET=/a \
