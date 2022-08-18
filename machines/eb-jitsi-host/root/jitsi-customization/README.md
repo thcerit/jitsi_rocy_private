@@ -2,6 +2,10 @@
 
 Add the customization notes, scripts and related files in this folder.
 
+Before customizing anything, set this folder location as
+`/root/jitsi-customization`.  Otherwise your changes will disappear if you run
+the installer again.
+
 #### TLS update
 
 Run the following command to regenerate the TLS certificates.
@@ -27,8 +31,6 @@ Some commands to be useful in the `eb-jitsi` container
 ```bash
 lxc-attach -n eb-jitsi -- curl http://127.0.0.1:8080/colibri/conferences
 lxc-attach -n eb-jitsi -- curl http://127.0.0.1:8888/stats
-lxc-attach -n eb-jitsi -- \
-    egrep -o "\[room=.*\].*(Created|Stopped)" /var/log/jitsi/jicofo.log
 ```
 
 ```bash
