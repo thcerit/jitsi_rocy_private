@@ -70,6 +70,17 @@ systemctl restart jicofo.service
 EOS
 
 # ------------------------------------------------------------------------------
+# META
+# ------------------------------------------------------------------------------
+# meta
+lxc-attach -n eb-jitsi -- zsh <<EOS
+set -e
+mkdir -p /root/meta
+VERSION=$(apt-cache policy jibri | grep Candidate | rev | cut -d' ' -f1 | rev)
+echo $VERSION > /root/meta/jibri-version
+EOS
+
+# ------------------------------------------------------------------------------
 # JIBRI SSH KEY
 # ------------------------------------------------------------------------------
 mkdir -p /root/.ssh
