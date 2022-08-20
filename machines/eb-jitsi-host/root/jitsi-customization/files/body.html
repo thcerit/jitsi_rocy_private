@@ -5,9 +5,10 @@ function setRecorderSettings() {
 
     if (!isRecorder) return false;
 
-    APP.store.getState()["features/video-layout"].tileViewEnabled = true;
-    APP.store.getState()["features/filmstrip"].visible = false;
+    APP.store.dispatch({type: 'SET_TILE_VIEW', enabled: true});
   } catch(e) {
+    // do nothing
+  } finally {
     setTimeout(function() {setRecorderSettings();}, 3000);
   }
 }
