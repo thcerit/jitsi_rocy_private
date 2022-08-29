@@ -4,11 +4,23 @@
 
 If there is no access to remote STUN, apply followings:
 
-- Disable `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`
-- Set `org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS` as `172.22.22.14`
-- Set `org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS`
-
 ```bash
+# disable STUN in sip-communicator.properties and jvb.conf
+hocon -f /etc/jitsi/videobridge/jvb.conf set \
+  ice4j.harvest.mapping.stun.enabled false
+
+# local pair
+hocon -f /etc/jitsi/videobridge/jvb.conf set \
+  ice4j.harvest.mapping.static-mappings.0.local-address 172.22.22.14
+hocon -f /etc/jitsi/videobridge/jvb.conf set \
+  ice4j.harvest.mapping.static-mappings.0.public-address <LOCAL-HOST-IP>
+
+# public pair
+hocon -f /etc/jitsi/videobridge/jvb.conf set \
+  ice4j.harvest.mapping.static-mappings.1.local-address 172.22.22.14
+hocon -f /etc/jitsi/videobridge/jvb.conf set \
+  ice4j.harvest.mapping.static-mappings.1.public-address <EXTERNAL-IP>
+
 systemctl restart jitsi-videobridge2.service
 ```
 
