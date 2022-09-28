@@ -52,7 +52,6 @@ systemctl restart jitsi-videobridge2.service
 - `enableClosePage: true`
 - `defaultLanguage: en`
 - `disableProfile: true`
-- `enableFeaturesBasedOnToken: true`
 - `enableInsecureRoomNameWarning: false`
 - `toolbarButtons`
   - `camera`
