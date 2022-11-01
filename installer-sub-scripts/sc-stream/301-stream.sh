@@ -117,25 +117,25 @@ EOS
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY_OPTION -dy reinstall hostname
+apt-get $APT_PROXY -dy reinstall hostname
 EOS
 
 # update
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY_OPTION update
-apt-get $APT_PROXY_OPTION -y dist-upgrade
+apt-get $APT_PROXY update
+apt-get $APT_PROXY -y dist-upgrade
 EOS
 
 # packages
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY_OPTION -y install ffmpeg
-apt-get $APT_PROXY_OPTION -y install nginx libnginx-mod-rtmp
-apt-get $APT_PROXY_OPTION -y install xz-utils
-apt-get $APT_PROXY_OPTION -y install libxml-xpath-perl
+apt-get $APT_PROXY -y install ffmpeg
+apt-get $APT_PROXY -y install nginx libnginx-mod-rtmp
+apt-get $APT_PROXY -y install xz-utils
+apt-get $APT_PROXY -y install libxml-xpath-perl
 EOS
 
 # ------------------------------------------------------------------------------
@@ -164,7 +164,7 @@ mkdir /tmp/source
 cd /tmp/source
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY_OPTION -dy source nginx
+apt-get $APT_PROXY -dy source nginx
 tar xf nginx_*.debian.tar.xz
 
 cp /tmp/source/debian/modules/rtmp/stat.xsl \
