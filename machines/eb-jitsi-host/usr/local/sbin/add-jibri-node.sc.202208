@@ -23,7 +23,6 @@ PUBLIC_INTERFACE=${PUBLIC_INTERFACE/% */}
 #EXTERNAL_IP=$(dig -4 +short myip.opendns.com a @resolver1.opendns.com)
 EXTERNAL_IP="185.118.193.52"
 
-
 ssh_() {
     ssh -F $SSH_CONFIG $NODE -- "$@"
 }
