@@ -12,7 +12,7 @@ set -e
 SSH_CONFIG="/root/.ssh/jms-config"
 
 APP="eb-jvb"
-APP_REPO="https://github.com/emrahcom/emrah-bullseye-templates.git"
+APP_REPO="https://github.com/enesdoganoglu46/emrah-bullseye-private.git"
 INSTALLER="https://raw.githubusercontent.com/emrahcom/emrah-bullseye-base/main/installer/eb"
 NODE=$1
 
