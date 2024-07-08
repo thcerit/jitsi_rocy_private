@@ -410,11 +410,15 @@ cp $ROOTFS/etc/jitsi/videobridge/jvb.conf \
     $ROOTFS/etc/jitsi/videobridge/jvb.conf.org
 cp $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties \
     $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties.org
-
+JVB_SHARD_PASSWD=$(egrep '^org.jitsi.videobridge.xmpp.user.shard.PASSWORD=' \
+    $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties | \
+    cut -d '=' -f2)
 # meta
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
 mkdir -p /root/meta
+echo '$JVB_SHARD_PASSWD' >/root/meta/jvb-shard-passwd
+chmod 600 /root/meta/jvb-shard-passwd
 VERSION=\$(apt-cache policy jitsi-videobridge2 | grep Installed | rev | \
     cut -d' ' -f1 | rev)
 echo \$VERSION > /root/meta/jvb-version
