@@ -1,1 +1,1 @@
-../../../../eb-jitsi/etc/apt/sources.list.d/jitsi-stable.list
+deb [signed-by=/usr/share/keyrings/jitsi.gpg] https://download.jitsi.org stable/
