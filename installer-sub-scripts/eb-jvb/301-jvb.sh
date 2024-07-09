@@ -167,7 +167,7 @@ cp $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties \
     $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties.org
 
 # add the custom config
-cat etc/jitsi/videobridge/config.custom >>$ROOTFS/etc/jitsi/videobridge/config
+cat /tmp/eb/machines/eb-jitsi/etc/jitsi/videobridge/config.custom >>$ROOTFS/etc/jitsi/videobridge/config
 
 # colibri
 lxc-attach -n $MACH -- zsh <<EOS
