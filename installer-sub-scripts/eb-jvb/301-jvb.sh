@@ -199,7 +199,7 @@ EOF
 fi
 
 # jvb-config
-cp /tmp/eb/machines/eb-jvb/usr/local/sbin/jvb-config $ROOTFS/usr/local/sbin/
+cp /tmp/eb/machines/eb-jvb/usr/local/sbin\ /jvb-config $ROOTFS/usr/local/sbin/
 chmod 744 $ROOTFS/usr/local/sbin/jvb-config
 cp /tmp/eb/machines/eb-jvb/etc/systemd/system/jvb-config.service $ROOTFS/etc/systemd/system/
 
