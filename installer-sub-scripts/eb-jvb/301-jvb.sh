@@ -199,9 +199,9 @@ EOF
 fi
 
 # jvb-config
-cp usr/local/sbin/jvb-config $ROOTFS/usr/local/sbin/
+cp /tmp/eb/machines/eb-jvb/usr/local/sbin/jvb-config $ROOTFS/usr/local/sbin/
 chmod 744 $ROOTFS/usr/local/sbin/jvb-config
-cp etc/systemd/system/jvb-config.service $ROOTFS/etc/systemd/system/
+cp /tmp/eb/machines/eb-jvb/etc/systemd/system/jvb-config.service $ROOTFS/etc/systemd/system/
 
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
