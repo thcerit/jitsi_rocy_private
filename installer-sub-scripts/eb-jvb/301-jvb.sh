@@ -185,7 +185,7 @@ sed -i "s/shard.PASSWORD=.*/shard.PASSWORD=$JVB_SHARD_PASSWD/" \
     $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties
 
 # NAT harvester. these will be needed if this is an in-house server.
-cat etc/jitsi/videobridge/sip-communicator.custom.properties \
+cat /tmp/eb/machines/eb-jitsi/etc/jitsi/videobridge/sip-communicator.custom.properties \
     >>$ROOTFS/etc/jitsi/videobridge/sip-communicator.properties
 sed -i "s/___PUBLIC_IP___/$IP/" \
     $ROOTFS/etc/jitsi/videobridge/sip-communicator.properties
