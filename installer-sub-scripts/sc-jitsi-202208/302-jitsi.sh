@@ -187,6 +187,7 @@ apt-get $APT_PROXY -y --install-recommends install \
     jitsi-meet-web=1.0.6447-1 \
     jitsi-meet-web-config=1.0.6447-1 \
     jitsi-meet-prosody=1.0.6447-1 \
+    jitsi-meet-turnserver=1.0.6918-1 \
     jitsi-videobridge2=2.2-22-g42bc1b99-1 \
     jicofo=1.0-911-1
 EOS
@@ -283,8 +284,8 @@ lxc-attach -n $MACH -- systemctl daemon-reload
 # COTURN
 # ------------------------------------------------------------------------------
 
-cp $machines/eb-jitsi/etc/turnserver.custom.conf \
-    $ROOTFS/etc/turnserver.conf
+#cp $machines/eb-jitsi/etc/turnserver.custom.conf \
+#    $ROOTFS/etc/turnserver.conf
 
 cp $ROOTFS/etc/turnserver.conf $ROOTFS/etc/turnserver.conf.org
 
