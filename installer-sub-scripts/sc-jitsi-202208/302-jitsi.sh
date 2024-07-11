@@ -282,7 +282,6 @@ lxc-attach -n $MACH -- systemctl daemon-reload
 # ------------------------------------------------------------------------------
 # COTURN
 # ------------------------------------------------------------------------------
-cp $ROOTFS/etc/turnserver.conf $ROOTFS/etc/turnserver.conf.org
 
 cat >>$ROOTFS/etc/turnserver.conf <<EOF
 
@@ -291,6 +290,8 @@ listening-ip=$IP
 allowed-peer-ip=$IP
 no-udp
 EOF
+
+cp $ROOTFS/etc/turnserver.conf $ROOTFS/etc/turnserver.conf.org
 
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
