@@ -86,6 +86,7 @@ set -e
 echo $MACH > /etc/hostname
 sed -i 's/\(127.0.1.1\s*\).*$/\1$MACH/' /etc/hosts
 hostname $MACH
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
 EOS
 
 # ------------------------------------------------------------------------------
