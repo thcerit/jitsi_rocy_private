@@ -125,6 +125,7 @@ done
 # ------------------------------------------------------------------------------
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo $MACH > /etc/hostname
 sed -i 's/\(127.0.1.1\s*\).*$/\1$JITSI_FQDN $MACH/' /etc/hosts
 hostname $MACH
