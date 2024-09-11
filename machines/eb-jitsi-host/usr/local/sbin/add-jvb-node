@@ -12,8 +12,8 @@ set -e
 SSH_CONFIG="/root/.ssh/jms-config"
 
 APP="eb-jvb"
-APP_REPO="https://github.com/serdar28/emrah-bullseye-private.git"
-INSTALLER="https://raw.githubusercontent.com/serdar28/emrah-bullseye-base/main/installer/eb"
+APP_REPO="https://github.com/thcerit/jitsi_rocy_private.git"
+INSTALLER="https://raw.githubusercontent.com/thcerit/jitsi_rocy_base/main/installer/eb"
 NODE=$1
 
 JITSI_ROOTFS="/var/lib/lxc/eb-jitsi/rootfs"
@@ -72,8 +72,8 @@ JVB_VERSION=$(cat $JITSI_ROOTFS/root/meta/jvb-version || true)
 # ------------------------------------------------------------------------------
 ssh_ <<EOS
 set -e
-apt-get -y --allow-releaseinfo-change update
-apt-get -y install wget
+dnf -y update
+dnf -y install wget
 
 rm -rf /tmp/eb-installer
 wget $INSTALLER -O /tmp/eb-installer -T 30
