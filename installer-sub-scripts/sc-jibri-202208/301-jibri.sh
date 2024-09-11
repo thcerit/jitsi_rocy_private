@@ -95,7 +95,7 @@ EOS
 zsh <<EOS
 set -e
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY -y install kmod alsa-utils
+dnf $APT_PROXY -y install kmod alsa-utils
 EOS
 
 # ------------------------------------------------------------------------------
