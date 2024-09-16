@@ -107,7 +107,8 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY -dy reinstall hostname
+#apt-get $APT_PROXY -dy reinstall hostname
+apt -y install hostname
 EOS
 
 # update
