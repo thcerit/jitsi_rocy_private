@@ -81,8 +81,8 @@ fi
 # ------------------------------------------------------------------------------
 # check
 # ------------------------------------------------------------------------------
-dnf install -y epel-release
-dnf install -y dpkg
+ssh_ dnf install -y epel-release
+ssh_ dnf install -y dpkg
 KERNEL=$(ssh_ uname -r)
 ARCH=$(ssh_ dpkg --print-architecture)
 
