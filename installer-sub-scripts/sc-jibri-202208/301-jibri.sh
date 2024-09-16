@@ -108,7 +108,7 @@ set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
 #apt-get -dy reinstall hostname
-apt -y install hostname
+apt-get -y install hostname
 EOS
 
 # update
