@@ -96,7 +96,7 @@ zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-dnf $APT_PROXY -y install kmod alsa-utils
+dnf -y install kmod alsa-utils
 EOS
 
 # ------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-#apt-get $APT_PROXY -dy reinstall hostname
+#apt-get -dy reinstall hostname
 apt -y install hostname
 EOS
 
@@ -116,8 +116,8 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY update
-apt-get $APT_PROXY -y dist-upgrade
+apt-get update
+apt-get -y dist-upgrade
 EOS
 
 # packages
@@ -125,11 +125,11 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY -y install gnupg unzip jq
-apt-get $APT_PROXY -y install libnss3-tools
-apt-get $APT_PROXY -y install va-driver-all vdpau-driver-all
-apt-get $APT_PROXY -y --install-recommends install ffmpeg
-apt-get $APT_PROXY -y install x11vnc
+apt-get -y install gnupg unzip jq
+apt-get -y install libnss3-tools
+apt-get -y install va-driver-all vdpau-driver-all
+apt-get -y --install-recommends install ffmpeg
+apt-get -y install x11vnc
 EOS
 
 # google chrome
@@ -140,14 +140,14 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 wget -T 30 -qO /tmp/google-chrome.gpg.key \
     https://dl.google.com/linux/linux_signing_key.pub
 apt-key add /tmp/google-chrome.gpg.key
-apt-get $APT_PROXY update
+apt-get update
 EOS
 
 lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY -y --install-recommends install google-chrome-stable
+apt-get -y --install-recommends install google-chrome-stable
 EOS
 
 # chromedriver
@@ -181,8 +181,8 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 export DEBIAN_FRONTEND=noninteractive
-apt-get $APT_PROXY -y install openjdk-11-jre-headless
-apt-get $APT_PROXY -y install \
+apt-get -y install openjdk-11-jre-headless
+apt-get -y install \
     jibri=8.0-121-g27323fe-1
 EOS
 
