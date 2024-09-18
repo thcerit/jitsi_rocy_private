@@ -344,7 +344,7 @@ chmod 744 /usr/local/sbin/jibri-ephemeral-stop
 
 cp $MACHINES/eb-jibri-host/etc/systemd/system/jibri-ephemeral-container.service \
     /etc/systemd/system/
-
+chmod 755 /etc/systemd/system/jibri-ephemeral-container.service
 systemctl daemon-reload
 systemctl enable jibri-ephemeral-container.service
 systemctl start jibri-ephemeral-container.service
