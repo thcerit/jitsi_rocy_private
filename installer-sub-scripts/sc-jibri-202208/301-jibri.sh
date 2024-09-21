@@ -124,6 +124,7 @@ lxc-attach -n $MACH -- zsh <<EOS
 set -e
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "151.101.38.132 deb.debian.org" >> /etc/hosts
+echo "151.101.38.132 security.debian.org" >> /etc/hosts
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y install gnupg unzip jq
 apt-get -y install libnss3-tools
