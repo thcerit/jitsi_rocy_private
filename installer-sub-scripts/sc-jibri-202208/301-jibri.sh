@@ -110,7 +110,7 @@ echo "151.101.38.132 deb.debian.org" >> /etc/hosts
 echo "151.101.38.132 security.debian.org" >> /etc/hosts
 export DEBIAN_FRONTEND=noninteractive
 #apt-get -dy reinstall hostname
-apt-get -y reinstall hostname
+apt-get -y install hostname
 EOS
 
 # update
