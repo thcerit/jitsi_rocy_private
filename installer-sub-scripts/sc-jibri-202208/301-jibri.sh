@@ -219,7 +219,7 @@ systemctl disable ssh.service
 EOS
 
 # snd_aloop module
-[ -z "$(egrep '^snd_aloop' /etc/modprobe.d/alsa-loopback.conf)" ] && echo snd_aloop >>/etc/modules
+#[ -z "$(egrep '^snd_aloop' /etc/modprobe.d/alsa-loopback.conf)" ] && echo snd_aloop >>/etc/modules
 cp $MACHINES/eb-jibri-host/etc/modprobe.d/alsa-loopback.conf /etc/modprobe.d/
 modprobe -r snd_aloop || true
 modprobe snd_aloop || true
