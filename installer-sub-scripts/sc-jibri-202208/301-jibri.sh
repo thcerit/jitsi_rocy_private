@@ -358,11 +358,11 @@ echo "-----------------------------------------"
 lxc-ls -f
 echo "-----------------------------------------"
 echo "Starting containers.."
-lxc-start --name eb-jibri-0
-sleep 5
 lxc-start --name eb-jibri-1
 sleep 5
 lxc-start --name eb-jibri-2
+sleep 5
+lxc-start --name eb-jibri-3
 echo "-----------------------------------------"
 lxc-ls -f
 echo "-----------------------------------------"
