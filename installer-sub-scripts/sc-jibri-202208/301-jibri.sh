@@ -352,4 +352,4 @@ cp $MACHINES/eb-jibri-host/etc/systemd/system/jibri-ephemeral-container.service 
 
 systemctl daemon-reload
 systemctl enable jibri-ephemeral-container.service
-systemctl start jibri-ephemeral-container.service
+systemctl start jibri-ephemeral-container.service || exit 0
