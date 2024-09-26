@@ -350,23 +350,6 @@ chmod 744 /usr/local/sbin/jibri-ephemeral-stop
 cp $MACHINES/eb-jibri-host/etc/systemd/system/jibri-ephemeral-container.service \
     /etc/systemd/system/
 
-#systemctl daemon-reload
-#systemctl enable jibri-ephemeral-container.service
-#systemctl start jibri-ephemeral-container.service
-#/usr/local/sbin/jibri-ephemeral-start
-
-lxc-copy -n eb-jibri-template -N eb-jibri-1 -e
-lxc-copy -n eb-jibri-template -N eb-jibri-2 -e
-lxc-copy -n eb-jibri-template -N eb-jibri-3 -e
-echo "-----------------------------------------"
-lxc-ls -f
-echo "-----------------------------------------"
-echo "Starting containers.."
-lxc-start --name eb-jibri-1
-sleep 5
-lxc-start --name eb-jibri-2
-sleep 5
-lxc-start --name eb-jibri-3
-echo "-----------------------------------------"
-lxc-ls -f
-echo "-----------------------------------------"
+systemctl daemon-reload
+systemctl enable jibri-ephemeral-container.service
+systemctl start jibri-ephemeral-container.service
