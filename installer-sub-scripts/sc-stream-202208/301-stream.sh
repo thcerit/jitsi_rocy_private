@@ -95,9 +95,9 @@ lxc-start -n $MACH -d
 lxc-wait -n $MACH -s RUNNING
 
 # wait for the network to be up
-for i in $(seq 0 9); do
+for i in $(seq 0 29); do
     lxc-attach -n $MACH -- ping -c1 host.loc && break || true
-    sleep 1
+    sleep 2
 done
 
 # ------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ lxc-start -n $MACH -d
 lxc-wait -n $MACH -s RUNNING
 
 # wait for the network to be up
-for i in $(seq 0 9); do
+for i in $(seq 0 29); do
     lxc-attach -n $MACH -- ping -c1 host.loc && break || true
-    sleep 1
+    sleep 2
 done
