@@ -276,6 +276,8 @@ EOS
 
 # jibri config
 cp etc/jitsi/jibri/jibri.conf $ROOTFS/etc/jitsi/jibri/
+cp etc/asound.conf $ROOTFS/etc/
+
 
 # the customized scripts
 cp usr/local/bin/finalize-recording.sh $ROOTFS/usr/local/bin/
